@@ -1,1 +1,44 @@
-<p>sidebar works!</p>
+<aside class="crm-sidebar d-flex flex-column">
+  <div class="brand d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <span class="brand-icon d-inline-flex align-items-center justify-content-center">
+        <i class="fa-solid fa-chart-line"></i>
+      </span>
+      <span class="brand-title">CRM System</span>
+    </div>
+    <button class="btn sidebar-toggle" type="button" aria-label="Toggle sidebar">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <nav class="sidebar-scroll flex-grow-1">
+    <div class="menu-section">
+      <div class="menu-heading">CRM Flow</div>
+
+      <a
+        *ngFor="let menu of crmMenus"
+        class="menu-link d-flex align-items-center gap-2"
+        [routerLink]="menu.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: menu.route === '/dashboard' }"
+      >
+        <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
+        <span>{{ menu.label }}</span>
+      </a>
+    </div>
+
+    <div class="menu-section" *ngIf="adminMenus.length">
+      <div class="menu-heading">Administration</div>
+
+      <a
+        *ngFor="let menu of adminMenus"
+        class="menu-link d-flex align-items-center gap-2"
+        [routerLink]="menu.route"
+        routerLinkActive="active"
+      >
+        <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
+        <span>{{ menu.label }}</span>
+      </a>
+    </div>
+  </nav>
+</aside>

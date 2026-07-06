@@ -23,7 +23,7 @@ CanActivateFn =
 
   if (
     user &&
-    user.role === requiredRole
+    normalizeRole(user.role) === normalizeRole(requiredRole)
   ) {
     return true;
   }
@@ -32,3 +32,7 @@ CanActivateFn =
 
   return false;
 };
+
+function normalizeRole(role: string): string {
+  return role.replace(/[-_]/g, ' ').trim().toLowerCase();
+}

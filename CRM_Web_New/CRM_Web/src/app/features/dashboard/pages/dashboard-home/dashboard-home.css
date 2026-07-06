@@ -1,0 +1,211 @@
+:host {
+  display: block;
+}
+
+.dashboard-page {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.welcome-band {
+  min-height: 104px;
+  padding: 22px 24px;
+  border-radius: 7px;
+  background: #c8103e;
+  box-shadow: 0 16px 30px rgba(200, 16, 62, 0.16);
+}
+
+.welcome-band h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.welcome-band div {
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.stat-row,
+.chart-row {
+  margin-top: 24px;
+}
+
+.card {
+  border: 1px solid #dbe2ea;
+  border-radius: 7px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+.stat-card .card-body {
+  padding: 24px;
+}
+
+.stat-title {
+  margin: 0;
+  color: #536172;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.stat-icon {
+  color: #c8103e;
+  font-size: 16px;
+}
+
+.stat-value {
+  margin-top: 14px;
+  color: #020617;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stat-note {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.stat-note.success {
+  color: #00a870;
+}
+
+.stat-note.muted {
+  color: #51657d;
+}
+
+.stat-note.danger {
+  color: #e00034;
+}
+
+.chart-card .card-body {
+  padding: 18px 24px 20px;
+}
+
+.panel-title {
+  margin: 0 0 14px;
+  color: #020617;
+  font-size: 19px;
+  font-weight: 850;
+}
+
+.bar-chart {
+  position: relative;
+  height: 210px;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+}
+
+.axis-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.bars {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: end;
+  gap: 24px;
+  padding: 0 18px;
+  border-left: 1px solid #94a3b8;
+  border-bottom: 1px solid #94a3b8;
+  background:
+    linear-gradient(to top, transparent calc(25% - 1px), #dbe3ed calc(25% - 1px), #dbe3ed 25%, transparent 25%),
+    linear-gradient(to top, transparent calc(50% - 1px), #dbe3ed calc(50% - 1px), #dbe3ed 50%, transparent 50%),
+    linear-gradient(to top, transparent calc(75% - 1px), #dbe3ed calc(75% - 1px), #dbe3ed 75%, transparent 75%);
+}
+
+.bars span {
+  display: block;
+  min-height: 28px;
+  border-radius: 6px 6px 3px 3px;
+  background: #c8103e;
+}
+
+.line-chart {
+  height: 210px;
+  border-left: 1px solid #94a3b8;
+  border-bottom: 1px solid #94a3b8;
+}
+
+.line-chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.grid line {
+  stroke: #dbe3ed;
+  stroke-width: 1;
+}
+
+.trend-fill {
+  fill: rgba(200, 16, 62, 0.04);
+}
+
+.trend-line {
+  fill: none;
+  stroke: #c8103e;
+  stroke-width: 3;
+}
+
+.donut-wrap {
+  min-height: 156px;
+}
+
+.donut-chart {
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #c8103e 0deg 108deg,
+    #334155 108deg 174deg,
+    #94a3b8 174deg 254deg,
+    #cbd5e1 254deg 316deg,
+    #f59e0b 316deg 360deg
+  );
+  position: relative;
+}
+
+.donut-chart::before {
+  content: "";
+  position: absolute;
+  inset: 32px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.source-legend {
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.source-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+@media (max-width: 767.98px) {
+  .welcome-band {
+    padding: 20px;
+  }
+
+  .welcome-band h1 {
+    font-size: 24px;
+  }
+
+  .bars {
+    gap: 14px;
+    padding: 0 12px;
+  }
+}
