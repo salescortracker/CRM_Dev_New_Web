@@ -1,7 +1,9 @@
 <div class="crm-shell d-flex">
-  <app-sidebar />
+  <app-sidebar
+  (sidebarToggle)="isSidebarCollapsed = $event">
+</app-sidebar>
 
-  <div class="crm-main flex-grow-1">
+  <div class="crm-main flex-grow-1" [class.sidebar-collapsed]="isSidebarCollapsed">
     <app-header />
 
     <main class="crm-content">

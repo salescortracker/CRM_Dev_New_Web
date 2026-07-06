@@ -1,43 +1,68 @@
-<aside class="crm-sidebar d-flex flex-column">
+<aside class="crm-sidebar d-flex flex-column" [class.collapsed]="isCollapsed">
   <div class="brand d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center gap-2">
       <span class="brand-icon d-inline-flex align-items-center justify-content-center">
         <i class="fa-solid fa-chart-line"></i>
       </span>
-      <span class="brand-title">CRM System</span>
+      <span class="brand-title" *ngIf="!isCollapsed">CRM System</span>
     </div>
-    <button class="btn sidebar-toggle" type="button" aria-label="Toggle sidebar">
+    <button class="btn sidebar-toggle" type="button" (click)="toggleSidebar()"
+      [title]="isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'" aria-label="Toggle sidebar">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
 
   <nav class="sidebar-scroll flex-grow-1">
     <div class="menu-section">
-      <div class="menu-heading">CRM Flow</div>
+      <div class="menu-heading" *ngIf="!isCollapsed">CRM Flow</div>
 
-      <a
-        *ngFor="let menu of crmMenus"
-        class="menu-link d-flex align-items-center gap-2"
-        [routerLink]="menu.route"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: menu.route === '/dashboard' }"
-      >
-        <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
-        <span>{{ menu.label }}</span>
-      </a>
+      <div *ngFor="let menu of crmMenus">
+
+        <!-- Parent -->
+
+        <a class="menu-link d-flex align-items-center justify-content-between" (click)="toggleMenu(menu)"
+          [routerLink]="menu.route || null">
+
+          <div class="d-flex align-items-center gap-2">
+
+            <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
+
+            <span *ngIf="!isCollapsed">
+              {{menu.label}}
+            </span>
+
+          </div>
+
+          <i *ngIf="menu.children && !isCollapsed" class="fa-solid"
+            [ngClass]="menu.expanded ? 'fa-chevron-down' : 'fa-chevron-right'">
+          </i>
+
+        </a>
+
+        <!-- Children -->
+
+        <div *ngIf="menu.children && menu.expanded && !isCollapsed" class="submenu">
+
+          <a *ngFor="let child of menu.children" class="submenu-link" [routerLink]="child.route">
+
+            <i class="fa-solid" [ngClass]="child.icon"></i>
+
+            {{child.label}}
+
+          </a>
+
+        </div>
+
+      </div>
     </div>
 
     <div class="menu-section" *ngIf="adminMenus.length">
-      <div class="menu-heading">Administration</div>
+      <div class="menu-heading" *ngIf="!isCollapsed">Administration</div>
 
-      <a
-        *ngFor="let menu of adminMenus"
-        class="menu-link d-flex align-items-center gap-2"
-        [routerLink]="menu.route"
-        routerLinkActive="active"
-      >
+      <a *ngFor="let menu of adminMenus" class="menu-link d-flex align-items-center gap-2" [routerLink]="menu.route"
+        routerLinkActive="active" [title]="menu.label">
         <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
-        <span>{{ menu.label }}</span>
+        <span *ngIf="!isCollapsed">{{ menu.label }}</span>
       </a>
     </div>
   </nav>

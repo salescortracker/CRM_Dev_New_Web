@@ -2,13 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/authentication/services/auth.service';
+import { Output, EventEmitter } from '@angular/core';
 
 interface SidebarMenu {
   label: string;
   icon: string;
-  route: string;
+  route?: string;
   roles: string[];
   group: 'CRM Flow' | 'Administration';
+  children?: SidebarMenu[];
+  expanded?: boolean;
 }
 
 @Component({
@@ -18,9 +21,42 @@ interface SidebarMenu {
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  @Output()
+sidebarToggle = new EventEmitter<boolean>();
+   isCollapsed = false;
+  toggleSidebar() {
+  this.isCollapsed = !this.isCollapsed;
+  this.sidebarToggle.emit(this.isCollapsed);
+}
+
   private readonly menus: SidebarMenu[] = [
     { label: 'Dashboard', icon: 'fa-chart-line', route: '/dashboard', roles: ['Super Admin', 'Admin', 'User'], group: 'CRM Flow' },
-    { label: 'Leads', icon: 'fa-star', route: '/leads', roles: ['Super Admin', 'Admin', 'User'], group: 'CRM Flow' },
+   {
+    label: 'Leads',
+    icon: 'fa-star',
+    roles: ['Super Admin', 'Admin', 'User'],
+    group: 'CRM Flow',
+
+    children: [
+
+      {
+        label: 'Lead List',
+        icon: 'fa-circle',
+        route: '/leads',
+        roles: ['Super Admin', 'Admin', 'User'],
+        group: 'CRM Flow'
+      },
+
+      {
+        label: 'Add Lead',
+        icon: 'fa-circle-plus',
+        route: '/leads/add',
+        roles: ['Super Admin', 'Admin'],
+        group: 'CRM Flow'
+      }
+
+    ]
+},
     { label: 'Contacts', icon: 'fa-users', route: '/contacts', roles: ['Super Admin', 'Admin', 'User'], group: 'CRM Flow' },
     { label: 'Companies', icon: 'fa-building', route: '/companies', roles: ['Super Admin', 'Admin'], group: 'CRM Flow' },
     { label: 'Deals', icon: 'fa-handshake', route: '/deals', roles: ['Super Admin', 'Admin', 'User'], group: 'CRM Flow' },
@@ -61,4 +97,13 @@ export class Sidebar {
   private normalizeRole(role: string): string {
     return role.replace(/[-_]/g, ' ').trim().toLowerCase();
   }
+  toggleMenu(menu: SidebarMenu): void {
+
+  if (!menu.children) {
+    return;
+  }
+
+  menu.expanded = !menu.expanded;
+}
+  
 }

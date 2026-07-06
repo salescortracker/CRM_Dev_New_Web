@@ -13,8 +13,11 @@
 .crm-main {
   min-width: 0;
   margin-left: 240px;
+   transition: margin-left .3s ease;
 }
-
+.crm-main.sidebar-collapsed {
+  margin-left: 70px;
+}
 .crm-content {
   min-height: calc(100vh - 100px);
   padding: 36px 20px 28px;
