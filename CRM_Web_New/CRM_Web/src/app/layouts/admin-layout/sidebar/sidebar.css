@@ -50,7 +50,7 @@
   padding: 22px 8px 18px;
 }
 
-.menu-section + .menu-section {
+.menu-section+.menu-section {
   margin-top: 22px;
 }
 
@@ -97,4 +97,94 @@
     width: 100%;
     max-height: 320px;
   }
+}
+
+.crm-sidebar {
+  width: 240px;
+  transition: width .3s ease;
+}
+
+.crm-sidebar.collapsed {
+  width: 70px;
+}
+
+.crm-sidebar.collapsed .menu-link {
+  justify-content: center;
+  padding: 10px;
+}
+
+.crm-sidebar.collapsed .menu-icon {
+  margin: 0;
+  font-size: 18px;
+}
+
+.crm-sidebar.collapsed .brand-title,
+.crm-sidebar.collapsed .menu-heading {
+  display: none;
+}
+
+.crm-sidebar.collapsed .brand {
+  justify-content: center;
+}
+
+.brand-title,
+.menu-heading,
+.menu-link span {
+  transition: opacity .25s;
+}
+
+.submenu {
+
+  margin-left: 28px;
+
+  overflow: hidden;
+
+  animation: slideDown .25s ease;
+
+}
+
+.submenu-link {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 12px;
+
+  color: rgba(255, 255, 255, .9);
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  border-radius: 6px;
+
+}
+
+.submenu-link:hover {
+
+  background: rgba(255, 255, 255, .15);
+
+}
+
+@keyframes slideDown {
+
+  from {
+
+    opacity: 0;
+
+    max-height: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    max-height: 400px;
+
+  }
+
 }
