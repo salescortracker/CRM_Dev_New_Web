@@ -5,6 +5,8 @@ import { Observable, BehaviorSubject, tap } from 'rxjs';
 
 import { LoginRequest } from '../models/login-request.model';
 import { LoginResponse } from '../models/login-response.model';
+import { environment } from '../../../../environments/environment';
+
 
 
 @Injectable({
@@ -12,8 +14,9 @@ import { LoginResponse } from '../models/login-response.model';
 })
 export class AuthService {
 
-    private apiUrl =
-        'https://localhost:44361/api/Auth'; // Change Port
+    // private apiUrl =
+    //     'https://localhost:44361/api/Auth'; // Change Port
+private apiUrl = `${environment.apiUrl}/Auth`;
 
     private currentUserSubject =
         new BehaviorSubject<LoginResponse | null>(
@@ -101,4 +104,109 @@ export class AuthService {
             ? JSON.parse(user)
             : null;
     }
+
+
+//     private menuApiUrl =
+//   `${environment.apiUrl}/Menu`;
+
+
+// CREATE
+// createMenu(
+//   menu: Menu
+// ): Observable<any> {
+
+//   return this.http.post(
+//     `${this.menuApiUrl}/create`,
+//     menu
+//   );
+// }
+
+
+// UPDATE
+// updateMenu(
+//   menu: Menu
+// ): Observable<any> {
+
+//   return this.http.post(
+//     `${this.menuApiUrl}/update`,
+//     menu
+//   );
+// }
+
+
+// DELETE
+// deleteMenu(
+//   id: number
+// ): Observable<any> {
+
+//   return this.http.post(
+//     `${this.menuApiUrl}/delete/${id}`,
+//     {}
+//   );
+// }
+
+
+// GET ALL
+// getMenus(): Observable<any> {
+
+//   return this.http.get(
+//     `${this.menuApiUrl}/get-all`
+//   );
+// }
+
+
+// GET BY ID
+// getMenuById(
+//   id: number
+// ): Observable<any> {
+
+//   return this.http.get(
+//     `${this.menuApiUrl}/get-by-id/${id}`
+//   );
+// }
+private menuApiUrl =
+  `${environment.apiUrl}/Menu`;
+
+
+// CREATE
+createMenu(menu: any): Observable<any> {
+  return this.http.post(
+    `${this.menuApiUrl}/create`,
+    menu
+  );
+}
+
+
+// UPDATE
+updateMenu(menu: any): Observable<any> {
+  return this.http.post(
+    `${this.menuApiUrl}/update`,
+    menu
+  );
+}
+
+
+// DELETE
+deleteMenu(id: number): Observable<any> {
+  return this.http.post(
+    `${this.menuApiUrl}/delete/${id}`,
+    {}
+  );
+}
+
+
+// GET ALL
+getMenus(): Observable<any> {
+  return this.http.get(
+    `${this.menuApiUrl}/get-all`
+  );
+}
+
+
+// GET BY ID
+getMenuById(id: number): Observable<any> {
+  return this.http.get(
+    `${this.menuApiUrl}/get-by-id/${id}`
+  );
+}
 }

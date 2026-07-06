@@ -1,1 +1,11 @@
-<p>admin-layout works!</p>
+<div class="crm-shell d-flex">
+  <app-sidebar />
+
+  <div class="crm-main flex-grow-1">
+    <app-header />
+
+    <main class="crm-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

@@ -1,1 +1,89 @@
-<p>dashboard-home works!</p>
+<section class="dashboard-page container-fluid">
+  <div class="welcome-band text-white">
+    <h1>Welcome, {{ displayName }}</h1>
+    <div>{{ todayLabel }}</div>
+  </div>
+
+  <div class="row g-4 stat-row">
+    <div class="col-12 col-sm-6 col-xl-3" *ngFor="let stat of stats">
+      <article class="stat-card card h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-start justify-content-between gap-3">
+            <h2 class="stat-title">{{ stat.title }}</h2>
+            <i class="fa-solid stat-icon" [ngClass]="stat.icon"></i>
+          </div>
+
+          <div class="stat-value">{{ stat.value }}</div>
+
+          <div class="stat-note" [ngClass]="stat.tone">
+            <i class="fa-solid" [ngClass]="stat.tone === 'success' ? 'fa-arrow-up' : 'fa-circle-info'"></i>
+            {{ stat.note }}
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="row g-4 chart-row">
+    <div class="col-12 col-xl-4">
+      <article class="chart-card card h-100">
+        <div class="card-body">
+          <h2 class="panel-title">Pipeline Overview</h2>
+          <div class="bar-chart" aria-label="Pipeline overview chart">
+            <div class="axis-labels">
+              <span>220,000</span>
+              <span>165,000</span>
+              <span>110,000</span>
+              <span>55,000</span>
+              <span>0</span>
+            </div>
+            <div class="bars">
+              <span *ngFor="let bar of pipelineBars" [style.height.%]="bar"></span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="col-12 col-xl-4">
+      <article class="chart-card card h-100">
+        <div class="card-body">
+          <h2 class="panel-title">Revenue Trend</h2>
+          <div class="line-chart" aria-label="Revenue trend chart">
+            <svg viewBox="0 0 320 210" role="img" aria-hidden="true">
+              <g class="grid">
+                <line x1="0" y1="35" x2="320" y2="35" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="0" y1="125" x2="320" y2="125" />
+                <line x1="0" y1="170" x2="320" y2="170" />
+                <line x1="65" y1="0" x2="65" y2="210" />
+                <line x1="130" y1="0" x2="130" y2="210" />
+                <line x1="195" y1="0" x2="195" y2="210" />
+                <line x1="260" y1="0" x2="260" y2="210" />
+              </g>
+              <path class="trend-fill" d="M0,115 C38,132 62,150 96,105 C128,62 148,50 180,78 C218,110 246,78 320,0 L320,210 L0,210 Z" />
+              <path class="trend-line" d="M0,115 C38,132 62,150 96,105 C128,62 148,50 180,78 C218,110 246,78 320,0" />
+            </svg>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="col-12 col-xl-4">
+      <article class="chart-card card h-100">
+        <div class="card-body">
+          <h2 class="panel-title">Lead Sources</h2>
+          <div class="donut-wrap d-flex align-items-center justify-content-center">
+            <div class="donut-chart" aria-label="Lead sources chart"></div>
+          </div>
+          <div class="source-legend d-flex flex-wrap justify-content-center gap-3">
+            <span *ngFor="let source of leadSources">
+              <i [style.background]="source.color"></i>
+              {{ source.label }}
+            </span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
