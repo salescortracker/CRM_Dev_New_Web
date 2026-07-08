@@ -32,6 +32,16 @@ export const routes: Routes = [
           import('./features/super-admin/menu-access/menu-access')
             .then(m => m.MenuAccess)
       },
+      {
+        path: 'roles',
+        loadComponent: () => import('./features/dashboard/pages/roles/roles')
+          .then(m => m.Roles)
+      },
+      {
+        path: 'organizations/branches',
+        loadComponent: () => import('./features/dashboard/pages/organizations/branches/branches')
+          .then(m => m.Branches)
+      },
       { path: '**', redirectTo: 'dashboard' }
     ]
   },
