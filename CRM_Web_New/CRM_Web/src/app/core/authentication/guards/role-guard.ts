@@ -15,15 +15,24 @@ CanActivateFn =
   const router =
     inject(Router);
 
-  const requiredRole =
-    route.data['role'];
+  const requiredRoles =
+    route.data['roles'] || [route.data['role']];
 
   const user =
-    authService.getCurrentUser();
+    authService.getCurrentUser() as any;
+
+  const userRole =
+    user?.role ||
+    user?.roleName ||
+    user?.userRole ||
+    user?.user?.role ||
+    user?.user?.roleName;
 
   if (
-    user &&
-    normalizeRole(user.role) === normalizeRole(requiredRole)
+    userRole &&
+    requiredRoles.some((role: string) =>
+      normalizeRole(userRole) === normalizeRole(role)
+    )
   ) {
     return true;
   }
@@ -34,5 +43,5 @@ CanActivateFn =
 };
 
 function normalizeRole(role: string): string {
-  return role.replace(/[-_]/g, ' ').trim().toLowerCase();
+  return (role || '').replace(/[-_]/g, ' ').trim().toLowerCase();
 }

@@ -13,15 +13,15 @@
   </div>
 
   <nav class="sidebar-scroll flex-grow-1">
-    <div class="menu-section">
-      <div class="menu-heading" *ngIf="!isCollapsed">CRM Flow</div>
+    <div class="menu-section" *ngFor="let group of menuGroups">
+      <div class="menu-heading" *ngIf="!isCollapsed">{{ group.heading }}</div>
 
-      <div *ngFor="let menu of crmMenus">
+      <div *ngFor="let menu of group.menus">
 
         <!-- Parent -->
 
         <a class="menu-link d-flex align-items-center justify-content-between" (click)="toggleMenu(menu)"
-          [routerLink]="menu.route || null">
+          [routerLink]="menu.route || null" routerLinkActive="active" [title]="menu.label">
 
           <div class="d-flex align-items-center gap-2">
 
@@ -54,16 +54,6 @@
         </div>
 
       </div>
-    </div>
-
-    <div class="menu-section" *ngIf="adminMenus.length">
-      <div class="menu-heading" *ngIf="!isCollapsed">Administration</div>
-
-      <a *ngFor="let menu of adminMenus" class="menu-link d-flex align-items-center gap-2" [routerLink]="menu.route"
-        routerLinkActive="active" [title]="menu.label">
-        <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
-        <span *ngIf="!isCollapsed">{{ menu.label }}</span>
-      </a>
     </div>
   </nav>
 </aside>
