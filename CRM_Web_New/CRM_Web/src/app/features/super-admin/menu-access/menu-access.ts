@@ -91,6 +91,8 @@ loadMenus(): void {
             JSON.parse(
               JSON.stringify(this.menus[0])
             );
+
+          this.syncSelectedRoleFromMenu();
         }
       },
 
@@ -113,6 +115,8 @@ loadMenus(): void {
           this.selectedMenu =
             response.data;
 
+          this.syncSelectedRoleFromMenu();
+
         }
       });
 
@@ -134,7 +138,7 @@ loadMenus(): void {
 
     orderNo: 1,
 
-    menuType: 'Common',
+    menuType: '',
 
     isActive: true,
 
@@ -149,9 +153,13 @@ loadMenus(): void {
     canApprove: false
   };
 
+  this.applyRoleToMenu(this.selectedRole);
+
 }
 
  saveMenu(): void {
+
+  this.applyRoleToMenu(this.selectedRole);
 
   if (this.selectedMenu.menuId === 0) {
 
@@ -245,7 +253,97 @@ loadMenus(): void {
 
       this.selectedMenu=JSON.parse(JSON.stringify(menu));
 
+      this.syncSelectedRoleFromMenu();
+
     }
+
+  }
+
+  selectRole(role: string): void {
+
+    this.selectedRole = role;
+
+    this.applyRoleToMenu(role);
+
+  }
+
+  menuTypeChanged(): void {
+
+    this.syncSelectedRoleFromMenu();
+
+  }
+
+  private applyRoleToMenu(role: string): void {
+
+    if (!this.selectedMenu) {
+
+      return;
+
+    }
+
+    this.selectedMenu.menuType =
+      this.toMenuTypeRole(role);
+
+  }
+
+  private syncSelectedRoleFromMenu(): void {
+
+    const role =
+      this.toDisplayRole(this.selectedMenu?.menuType);
+
+    if (role) {
+
+      this.selectedRole = role;
+
+    }
+
+  }
+
+  private toMenuTypeRole(role: string): string {
+
+    return this.normalizeRole(role) === 'super admin'
+      ? 'SuperAdmin'
+      : role;
+
+  }
+
+  private toDisplayRole(menuType?: string): string | null {
+
+    const normalizedRole =
+      this.normalizeRole(menuType || '');
+
+    if (normalizedRole === 'superadmin' || normalizedRole === 'super admin') {
+
+      return 'Super Admin';
+
+    }
+
+    if (normalizedRole === 'admin') {
+
+      return 'Admin';
+
+    }
+
+    if (normalizedRole === 'user') {
+
+      return 'User';
+
+    }
+
+    return null;
+
+  }
+
+  private normalizeRole(role: string): string {
+
+    const normalizedRole = (role || '')
+      .replace(/[-_]/g, ' ')
+      .trim()
+      .toLowerCase();
+
+    return normalizedRole === 'superadmin'
+      ? 'super admin'
+      : normalizedRole;
 
   }
 
