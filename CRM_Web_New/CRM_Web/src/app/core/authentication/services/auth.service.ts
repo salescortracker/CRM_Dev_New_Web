@@ -14,8 +14,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class AuthService {
 
-    // private apiUrl =
-    //     'https://localhost:44361/api/Auth'; // Change Port
+    
 private apiUrl = `${environment.apiUrl}/Auth`;
 
     private currentUserSubject =
@@ -106,64 +105,7 @@ private apiUrl = `${environment.apiUrl}/Auth`;
     }
 
 
-//     private menuApiUrl =
-//   `${environment.apiUrl}/Menu`;
 
-
-// CREATE
-// createMenu(
-//   menu: Menu
-// ): Observable<any> {
-
-//   return this.http.post(
-//     `${this.menuApiUrl}/create`,
-//     menu
-//   );
-// }
-
-
-// UPDATE
-// updateMenu(
-//   menu: Menu
-// ): Observable<any> {
-
-//   return this.http.post(
-//     `${this.menuApiUrl}/update`,
-//     menu
-//   );
-// }
-
-
-// DELETE
-// deleteMenu(
-//   id: number
-// ): Observable<any> {
-
-//   return this.http.post(
-//     `${this.menuApiUrl}/delete/${id}`,
-//     {}
-//   );
-// }
-
-
-// GET ALL
-// getMenus(): Observable<any> {
-
-//   return this.http.get(
-//     `${this.menuApiUrl}/get-all`
-//   );
-// }
-
-
-// GET BY ID
-// getMenuById(
-//   id: number
-// ): Observable<any> {
-
-//   return this.http.get(
-//     `${this.menuApiUrl}/get-by-id/${id}`
-//   );
-// }
 private menuApiUrl =
   `${environment.apiUrl}/Menu`;
 
@@ -207,6 +149,53 @@ getMenus(): Observable<any> {
 getMenuById(id: number): Observable<any> {
   return this.http.get(
     `${this.menuApiUrl}/get-by-id/${id}`
+  );
+}
+
+
+private companyApiUrl =
+`${environment.apiUrl}/Master`;
+
+
+// CREATE COMPANY
+createCompany(company: any): Observable<any> {
+  return this.http.post(
+    `${this.companyApiUrl}/createcompany`,
+    company
+  );
+}
+
+
+// UPDATE COMPANY
+updateCompany(company: any): Observable<any> {
+  return this.http.post(
+    `${this.companyApiUrl}/updatecompany`,
+    company
+  );
+}
+
+
+// DELETE COMPANY
+deleteCompany(id: number): Observable<any> {
+  return this.http.post(
+    `${this.companyApiUrl}/deletecompany/${id}`,
+    {}
+  );
+}
+
+
+// GET ALL COMPANY
+getCompanies(): Observable<any> {
+  return this.http.get(
+    `${this.companyApiUrl}/getallcompany`
+  );
+}
+
+
+// GET COMPANY BY ID
+getCompanyById(id: number): Observable<any> {
+  return this.http.get(
+    `${this.companyApiUrl}/getbyidcompany/${id}`
   );
 }
 }
