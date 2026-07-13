@@ -25,6 +25,12 @@ export const routes: Routes = [
             .then(m => m.DashboardHome)
       },
       {
+        path: 'company',
+        loadComponent: () =>
+          import('./features/dashboard/pages/company/company')
+            .then(m => m.Company)
+      },
+      {
         path: 'menu-access',
         canActivate: [roleGuard],
         data: { role: 'Super Admin' },
