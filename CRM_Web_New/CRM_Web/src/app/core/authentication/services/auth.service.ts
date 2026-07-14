@@ -198,4 +198,44 @@ getCompanyById(id: number): Observable<any> {
     `${this.companyApiUrl}/getbyidcompany/${id}`
   );
 }
+
+// ================= REGION =================
+
+// CREATE REGION
+createRegion(region: any): Observable<any> {
+  return this.http.post(
+    `${this.companyApiUrl}/createregion`,
+    region
+  );
+}
+
+// UPDATE REGION
+updateRegion(region: any): Observable<any> {
+  return this.http.post(
+    `${this.companyApiUrl}/updateregion`,
+    region
+  );
+}
+
+// DELETE REGION
+deleteRegion(id: number): Observable<any> {
+  return this.http.post(
+    `${this.companyApiUrl}/deleteregion/${id}`,
+    {}
+  );
+}
+
+// GET ALL REGIONS
+getRegions(): Observable<any> {
+  return this.http.get(
+    `${this.companyApiUrl}/getallregion`
+  );
+}
+
+// GET REGION BY ID
+getRegionById(id: number): Observable<any> {
+  return this.http.get(
+    `${this.companyApiUrl}/getbyidregion/${id}`
+  );
+}
 }
