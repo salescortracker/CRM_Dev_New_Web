@@ -31,6 +31,11 @@ export const routes: Routes = [
             .then(m => m.Company)
       },
       {
+         path: 'region',
+         loadComponent: () =>
+          import('./features/pages/region/region').then(m => m.Region)
+      },
+      {
         path: 'menu-access',
         canActivate: [roleGuard],
         data: { role: 'Super Admin' },

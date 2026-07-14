@@ -13,67 +13,75 @@
             <div class="row">
 
                 <div class="col-md-4 mb-3">
-                    <label>Company Name</label>
-                    <input class="form-control"
-                           [(ngModel)]="company.companyName">
+                    <label>Company Name<span class="text-danger">*</span></label>
+                    <input class="form-control" [(ngModel)]="company.companyName">
+                    <div class="text-danger mt-1" *ngIf="submitted && !company.companyName">
+
+                        Company Name is required.
+
+                    </div>
                 </div>
 
                 <div class="col-md-4 mb-3">
-                    <label>Company Code</label>
-                    <input class="form-control"
-                           [(ngModel)]="company.companyCode">
+                    <label>Company Code<span class="text-danger">*</span></label>
+                    <input class="form-control" [(ngModel)]="company.companyCode">
+                    <div class="text-danger mt-1" *ngIf="submitted && !company.companyCode">
+
+                        Company Code is required.
+
+                    </div>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label>Industry</label>
-                    <input class="form-control"
-                           [(ngModel)]="company.industryType">
+                    <input class="form-control" [(ngModel)]="company.industryType">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label>Headquarters</label>
-                    <input class="form-control"
-                           [(ngModel)]="company.headquarters">
+                    <input class="form-control" [(ngModel)]="company.headquarters">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label>Email</label>
-                    <input class="form-control"
-                           [(ngModel)]="company.companyEmail">
+                    <input class="form-control" [(ngModel)]="company.companyEmail">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label>Contact</label>
-                    <input class="form-control"
-                           [(ngModel)]="company.companyContact">
+                    <input class="form-control" [(ngModel)]="company.companyContact" type="number">
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Address</label>
-                    <textarea class="form-control"
-                              [(ngModel)]="company.companyAddress"></textarea>
+                    <textarea class="form-control" [(ngModel)]="company.companyAddress"></textarea>
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <label>Plan Start</label>
-                    <input type="date"
-                           class="form-control"
-                           [(ngModel)]="company.planStartDate">
+                    <label>Plan Start<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" [(ngModel)]="company.planStartDate">
+                    <div class="text-danger mt-1" *ngIf="submitted && !company.planStartDate">
+
+                        Plan Start Date is required.
+
+                    </div>
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <label>Expiry Date</label>
-                    <input type="date"
-                           class="form-control"
-                           [(ngModel)]="company.expiryDate">
+                    <label>Expiry Date<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" [(ngModel)]="company.expiryDate">
+                    <div class="text-danger mt-1" *ngIf="submitted && !company.expiryDate">
+
+                        Expiry Date is required.
+
+                    </div>
                 </div>
 
                 <div class="col-md-3">
 
                     <label>
 
-                        <input type="checkbox"
-                               [(ngModel)]="company.isActive">
+                        <input type="checkbox" [(ngModel)]="company.isActive">
 
                         Active
 
@@ -83,17 +91,13 @@
 
             </div>
 
-            <button
-                class="btn btn-danger me-2"
-                (click)="saveCompany()">
+            <button class="btn btn-danger me-2" (click)="saveCompany()">
 
                 {{isEdit?'Update':'Save'}}
 
             </button>
 
-            <button
-                class="btn btn-secondary"
-                (click)="clear()">
+            <button class="btn btn-secondary" (click)="clear()">
 
                 Clear
 
@@ -104,6 +108,15 @@
     </div>
 
     <br>
+    <div class="row mb-3">
+
+        <div class="col-md-4">
+
+            <input type="text" class="form-control" placeholder="Search Company..." [(ngModel)]="searchText">
+
+        </div>
+
+    </div>
 
     <table class="table table-bordered table-hover">
 
@@ -133,7 +146,7 @@
 
         <tbody>
 
-            <tr *ngFor="let item of companies; let i=index">
+            <tr *ngFor="let item of pagedCompanies; let i=index">
 
                 <td>{{i+1}}</td>
 
@@ -155,17 +168,13 @@
 
                 <td>
 
-                    <button
-                        class="btn btn-warning btn-sm me-2"
-                        (click)="edit(item.companyId)">
+                    <button class="btn btn-warning btn-sm me-2" (click)="edit(item.companyId)">
 
                         Edit
 
                     </button>
 
-                    <button
-                        class="btn btn-danger btn-sm"
-                        (click)="delete(item.companyId)">
+                    <button class="btn btn-danger btn-sm" (click)="delete(item.companyId)">
 
                         Delete
 
@@ -178,5 +187,10 @@
         </tbody>
 
     </table>
+
+    <app-pagination [page]="page" [pageSize]="pageSize" [totalRecords]="filteredCompanies.length"
+        (pageChanged)="changePage($event)" (pageSizeChanged)="changePageSize($event)">
+
+    </app-pagination>
 
 </div>
