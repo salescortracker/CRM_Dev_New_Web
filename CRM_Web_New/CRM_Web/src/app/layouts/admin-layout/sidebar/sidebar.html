@@ -1,59 +1,101 @@
-<aside class="crm-sidebar d-flex flex-column" [class.collapsed]="isCollapsed">
-  <div class="brand d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center gap-2">
-      <span class="brand-icon d-inline-flex align-items-center justify-content-center">
-        <i class="fa-solid fa-chart-line"></i>
-      </span>
-      <span class="brand-title" *ngIf="!isCollapsed">CRM System</span>
-    </div>
-    <button class="btn sidebar-toggle" type="button" (click)="toggleSidebar()"
-      [title]="isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'" aria-label="Toggle sidebar">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
+<aside class="crm-sidebar"
+       [class.collapsed]="isCollapsed">
 
-  <nav class="sidebar-scroll flex-grow-1">
-    <div class="menu-section" *ngFor="let group of menuGroups">
-      <div class="menu-heading" *ngIf="!isCollapsed">{{ group.heading }}</div>
+    <div class="brand">
 
-      <div *ngFor="let menu of group.menus">
+        <div class="logo">
 
-        <!-- Parent -->
-
-        <a class="menu-link d-flex align-items-center justify-content-between" (click)="toggleMenu(menu)"
-          [routerLink]="menu.route || null" routerLinkActive="active" [title]="menu.label">
-
-          <div class="d-flex align-items-center gap-2">
-
-            <i class="fa-solid menu-icon" [ngClass]="menu.icon"></i>
+            <i class="fa-solid fa-chart-line"></i>
 
             <span *ngIf="!isCollapsed">
-              {{menu.label}}
+                CRM System
             </span>
-
-          </div>
-
-          <i *ngIf="menu.children && !isCollapsed" class="fa-solid"
-            [ngClass]="menu.expanded ? 'fa-chevron-down' : 'fa-chevron-right'">
-          </i>
-
-        </a>
-
-        <!-- Children -->
-
-        <div *ngIf="menu.children && menu.expanded && !isCollapsed" class="submenu">
-
-          <a *ngFor="let child of menu.children" class="submenu-link" [routerLink]="child.route">
-
-            <i class="fa-solid" [ngClass]="child.icon"></i>
-
-            {{child.label}}
-
-          </a>
 
         </div>
 
-      </div>
+        <button
+            class="toggle-btn"
+            (click)="toggleSidebar()">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
     </div>
-  </nav>
+
+    <nav>
+
+        <div
+            *ngFor="let group of menuGroups"
+            class="menu-group">
+
+            <h6 *ngIf="!isCollapsed">
+
+                {{group.heading}}
+
+            </h6>
+
+            <div *ngFor="let menu of group.menus">
+
+                <!-- Parent -->
+
+                <div
+                    class="menu-item"
+                    (click)="onMenuClick(menu)">
+
+                    <div class="left">
+
+                        <i
+                            class="fa-solid"
+                            [ngClass]="menu.icon">
+                        </i>
+
+                        <span *ngIf="!isCollapsed">
+
+                            {{menu.label}}
+
+                        </span>
+
+                    </div>
+
+                    <i
+                        *ngIf="menu.children?.length && !isCollapsed"
+                        class="fa-solid"
+                        [ngClass]="menu.expanded ? 'fa-chevron-down':'fa-chevron-right'">
+                    </i>
+
+                </div>
+
+                <!-- Submenu -->
+
+                <div
+                    class="submenu"
+                    *ngIf="menu.expanded && menu.children && !isCollapsed">
+
+                    <div
+                        class="submenu-item"
+                        *ngFor="let child of menu.children"
+                        (click)="onChildClick(child)">
+
+                        <i
+                            class="fa-solid"
+                            [ngClass]="child.icon">
+                        </i>
+
+                        <span>
+
+                            {{child.label}}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
 </aside>

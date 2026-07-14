@@ -30,6 +30,7 @@ export const routes: Routes = [
           import('./features/dashboard/pages/company/company')
             .then(m => m.Company)
       },
+       
       {
         path: 'menu-access',
         canActivate: [roleGuard],
@@ -37,6 +38,14 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/super-admin/menu-access/menu-access')
             .then(m => m.MenuAccess)
+      },
+      {
+        path: 'user',
+        canActivate: [roleGuard],
+        data: { role: 'Super Admin' },
+        loadComponent: () =>
+          import('./features/super-admin/users/users')
+            .then(m => m.Users)
       },
       {
         path: 'roles',
