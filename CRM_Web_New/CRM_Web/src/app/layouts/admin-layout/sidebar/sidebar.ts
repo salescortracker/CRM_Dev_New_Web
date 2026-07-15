@@ -113,6 +113,24 @@ export class Sidebar {
           icon: 'fa-users-gear',
           route: '/user',
           group: 'Administration'
+        },
+        {
+          label: 'Plans',
+          icon: 'fa-list',
+          route: '/plans',
+          group: 'Administration' 
+        },
+        {
+           label: 'Organizations',
+            icon: 'fa-building',
+            route: '/organizations',
+            group: 'Administration'
+        },
+        {
+          label: 'Subscriptions',
+          icon: 'fa-receipt',
+          route: '/subscriptions',
+          group: 'Administration'
         }
 
       ]
@@ -135,7 +153,12 @@ export class Sidebar {
           route: '/company',
           group: 'Setup'
         },
-
+        {
+          label: 'Region',
+          icon: 'fa-map',
+          route: '/region',
+          group: 'Setup'
+        },
         {
           label: 'Department',
           icon: 'fa-sitemap',
