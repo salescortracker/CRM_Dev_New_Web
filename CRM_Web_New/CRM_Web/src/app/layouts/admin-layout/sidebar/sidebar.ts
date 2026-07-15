@@ -125,32 +125,8 @@ export class Sidebar {
     {
       label: 'Setup',
       icon: 'fa-gears',
+      route: '/master-data',
       group: 'Setup',
-      expanded: false,
-      children: [
-
-        {
-          label: 'Company',
-          icon: 'fa-building',
-          route: '/company',
-          group: 'Setup'
-        },
-
-        {
-          label: 'Department',
-          icon: 'fa-sitemap',
-          route: '/department',
-          group: 'Setup'
-        },
-
-        {
-          label: 'Designation',
-          icon: 'fa-id-badge',
-          route: '/designation',
-          group: 'Setup'
-        }
-
-      ]
     }
 
   ];
