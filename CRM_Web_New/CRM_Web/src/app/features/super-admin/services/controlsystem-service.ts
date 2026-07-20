@@ -58,4 +58,44 @@ getPlanById(id: number): Observable<any> {
     `${this.planApiUrl}/getbyidplan/${id}`
   );
 }
+
+// ================= ORGANIZATION =================
+
+// CREATE
+createOrganization(data:any){
+   return this.http.post(
+      `${this.planApiUrl}/createorganization`,
+      data
+   );
+}
+
+// UPDATE
+updateOrganization(data:any){
+   return this.http.post(
+      `${this.planApiUrl}/updateorganization`,
+      data
+   );
+}
+
+// DELETE
+deleteOrganization(id: number): Observable<any> {
+  return this.http.post(
+    `${this.planApiUrl}/deleteorganization/${id}`,
+    {}
+  );
+}
+
+// GET ALL
+getOrganizations(): Observable<any> {
+  return this.http.get(
+    `${this.planApiUrl}/getallorganization`
+  );
+}
+
+// GET BY ID
+getOrganizationById(id: number): Observable<any> {
+  return this.http.get(
+    `${this.planApiUrl}/getorganizationbyid/${id}`
+  );
+}
 }

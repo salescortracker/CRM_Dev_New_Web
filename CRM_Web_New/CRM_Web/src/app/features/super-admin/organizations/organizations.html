@@ -73,30 +73,32 @@
           </select>
           <select class="filter-select" [(ngModel)]="planFilter">
             <option value="All">All Plans</option>
-            <option *ngFor="let plan of plans" [value]="plan">{{ plan }}</option>
+            <option *ngFor="let plan of plans" [ngValue]="plan.planName">
+              {{ plan.planName }}
+            </option>
           </select>
         </div>
-        <p class="list-count">{{ filteredOrganizations.length }} organization{{ filteredOrganizations.length === 1 ? '' : 's' }}</p>
+        <p class="list-count">{{ filteredOrganizations.length }} organization{{ filteredOrganizations.length === 1 ? ''
+          : 's' }}</p>
       </div>
 
       <div class="list-items">
-        <button
-          class="list-row"
-          type="button"
+        <button class="list-row" type="button"
           *ngFor="let organization of filteredOrganizations; trackBy: trackByOrganizationId"
-          [class.row-active]="selectedOrganization?.id === organization.id"
-          (click)="selectOrganization(organization)">
+          [class.row-active]="selectedOrganization?.id === organization.id" (click)="selectOrganization(organization)">
           <div class="row-top">
-            <span class="row-avatar" [style.background]="organization.brandingColor">{{ getInitials(organization.name) }}</span>
+            <span class="row-avatar" [style.background]="organization.brandingColor">{{ getInitials(organization.name)
+              }}</span>
             <span class="row-info">
-              <strong class="row-name" [class.name-primary]="selectedOrganization?.id === organization.id">{{ organization.name }}</strong>
+              <strong class="row-name" [class.name-primary]="selectedOrganization?.id === organization.id">{{
+                organization.name }}</strong>
               <small class="row-domain">{{ organization.domain }}</small>
             </span>
             <i class="fas fa-chevron-right row-chevron"></i>
           </div>
           <div class="row-badges">
-            <span class="badge" [ngClass]="statusMeta[organization.status].cls">
-              <span class="badge-dot" [ngClass]="statusMeta[organization.status].dot"></span>
+            <span class="badge" [ngClass]="statusMeta[organization.status]?.cls">
+              <span class="badge-dot" [ngClass]="statusMeta[organization.status]?.dot"></span>
               {{ organization.status }}
             </span>
             <span class="badge badge-plan" [ngClass]="planMeta[organization.plan].cls">{{ organization.plan }}</span>
@@ -125,26 +127,62 @@
           <div class="form-section">
             <p class="section-label">Basic Information</p>
             <div class="grid-2">
-              <label class="field col-span-2">
+
+              <label class="field">
+                <span>Organization Code *</span>
+                <input [(ngModel)]="form.organizationCode" placeholder="ORG0001" [readonly]="isEditing" />
+              </label>
+
+              <label class="field">
                 <span>Organization Name *</span>
                 <input [(ngModel)]="form.name" placeholder="Acme Corporation" />
               </label>
+
               <label class="field">
                 <span>Domain *</span>
                 <input [(ngModel)]="form.domain" placeholder="acme.crm.local" />
               </label>
+
               <label class="field">
                 <span>Admin Email</span>
                 <input type="email" [(ngModel)]="form.adminEmail" placeholder="admin@acme.com" />
               </label>
               <label class="field">
+                <span>Contact Person</span>
+                <input [(ngModel)]="form.contactPerson" placeholder="John Smith">
+              </label>
+
+              <label class="field">
+                <span>Contact Email</span>
+                <input type="email" [(ngModel)]="form.contactEmail" placeholder="john@acme.com">
+              </label>
+
+              <label class="field">
+                <span>Contact Mobile</span>
+                <input [(ngModel)]="form.contactMobile" placeholder="+91 9876543210">
+              </label>
+
+
+              <label class="field">
+                <span>Phone</span>
+                <input [(ngModel)]="form.phone" placeholder="+91 9876543210" />
+              </label>
+
+              <label class="field">
+                <span>Website</span>
+                <input [(ngModel)]="form.website" placeholder="https://company.com" />
+              </label>
+
+              <label class="field">
                 <span>Industry</span>
                 <input [(ngModel)]="form.industry" placeholder="Technology" />
               </label>
+
               <label class="field">
                 <span>Country</span>
                 <input [(ngModel)]="form.country" placeholder="India" />
               </label>
+
             </div>
           </div>
 
@@ -153,8 +191,16 @@
             <div class="grid-3">
               <label class="field">
                 <span>Plan</span>
-                <select [(ngModel)]="form.plan">
-                  <option *ngFor="let plan of plans" [value]="plan">{{ plan }}</option>
+                <select [(ngModel)]="form.plan" (change)="onPlanChange()">
+
+                  <option value="">Select Plan</option>
+
+                  <option *ngFor="let plan of plans" [value]="plan.planName">
+
+                    {{ plan.planName }}
+
+                  </option>
+
                 </select>
               </label>
               <label class="field">
@@ -169,36 +215,101 @@
               </label>
               <label class="field">
                 <span>Max Users</span>
-                <input type="number" [(ngModel)]="form.maxUsers" />
+                <input type="number" [(ngModel)]="form.maxUsers" readonly>
               </label>
               <label class="field">
                 <span>Storage Limit (GB)</span>
-                <input type="number" [(ngModel)]="form.maxStorageGB" />
+                <input type="number" [(ngModel)]="form.maxStorageGB" readonly>
               </label>
               <label class="field">
+                <span>Company Logo</span>
+
+                <input type="file" accept="image/*" (change)="onLogoSelected($event)">
+              </label>
+
+              <div *ngIf="logoPreview" style="margin-top:10px">
+                <img [src]="logoPreview" width="120" height="120" style="border-radius:6px;border:1px solid #ddd">
+              </div>
+
+              <label class="field">
+
                 <span>Brand Color</span>
+
                 <span class="color-row">
-                  <input class="color-swatch" type="color" [(ngModel)]="form.brandingColor" />
-                  <input class="color-text" [(ngModel)]="form.brandingColor" />
+
+                  <input class="color-swatch" type="color" [(ngModel)]="form.brandingColor">
+
+                  <input class="color-text" [(ngModel)]="form.brandingColor">
+
                 </span>
+
               </label>
             </div>
+          </div>
+          <div class="form-section">
+
+            <p class="section-label">Organization Settings</p>
+
+            <div class="grid-3">
+
+              <label class="field">
+                <span>Time Zone</span>
+
+                <select [(ngModel)]="form.timeZone">
+
+                  <option value="Asia/Kolkata">Asia/Kolkata</option>
+
+                  <option value="America/New_York">America/New_York</option>
+
+                  <option value="Europe/London">Europe/London</option>
+
+                  <option value="Australia/Sydney">Australia/Sydney</option>
+
+                </select>
+
+              </label>
+
+              <label class="field">
+
+                <span>Currency</span>
+
+                <select [(ngModel)]="form.currency">
+
+                  <option value="INR">INR</option>
+
+                  <option value="USD">USD</option>
+
+                  <option value="EUR">EUR</option>
+
+                  <option value="AED">AED</option>
+
+                </select>
+
+              </label>
+
+              <label class="field">
+
+                <span>Subscription Start Date</span>
+
+                <input type="date" [(ngModel)]="form.subscriptionStartDate" />
+
+              </label>
+
+            </div>
+
           </div>
 
           <div class="form-section">
             <p class="section-label">CRM Modules</p>
             <div class="grid-2">
-              <button
-                class="feature-toggle"
-                type="button"
-                *ngFor="let feature of allFeatures"
-                [class.feature-on]="form.features[feature.key]"
-                (click)="toggleFormFeature(feature.key)">
+              <button class="feature-toggle" type="button" *ngFor="let feature of allFeatures"
+                [class.feature-on]="form.features[feature.key]" (click)="toggleFormFeature(feature.key)">
                 <span class="module-toggle-icon" [class.module-icon-on]="form.features[feature.key]">
                   <i class="fas" [ngClass]="feature.icon"></i>
                 </span>
                 {{ feature.label }}
-                <i class="fas module-toggle-state" [ngClass]="form.features[feature.key] ? 'fa-toggle-on' : 'fa-toggle-off'"></i>
+                <i class="fas module-toggle-state"
+                  [ngClass]="form.features[feature.key] ? 'fa-toggle-on' : 'fa-toggle-off'"></i>
               </button>
             </div>
           </div>
@@ -214,10 +325,12 @@
       </aside>
 
       <div class="detail-panel" *ngIf="!showForm && selectedOrganization">
-        <div class="detail-header" [style.background]="'linear-gradient(135deg, ' + selectedOrganization.brandingColor + '14 0%, transparent 62%)'">
+        <div class="detail-header"
+          [style.background]="'linear-gradient(135deg, ' + selectedOrganization.brandingColor + '14 0%, transparent 62%)'">
           <div class="detail-header-top">
             <div class="detail-identity">
-              <span class="detail-avatar" [style.background]="'linear-gradient(135deg, ' + selectedOrganization.brandingColor + ', ' + selectedOrganization.brandingColor + 'bb)'">
+              <span class="detail-avatar"
+                [style.background]="'linear-gradient(135deg, ' + selectedOrganization.brandingColor + ', ' + selectedOrganization.brandingColor + 'bb)'">
                 {{ getInitials(selectedOrganization.name) }}
               </span>
               <div>
@@ -231,8 +344,10 @@
                     <span class="badge-dot" [ngClass]="statusMeta[selectedOrganization.status].dot"></span>
                     {{ selectedOrganization.status }}
                   </span>
-                  <span class="badge badge-plan" [ngClass]="planMeta[selectedOrganization.plan].cls">{{ selectedOrganization.plan }}</span>
-                  <span class="detail-meta-text">{{ selectedOrganization.industry }} | {{ selectedOrganization.country }}</span>
+                  <span class="badge badge-plan" [ngClass]="planMeta[selectedOrganization.plan].cls">{{
+                    selectedOrganization.plan }}</span>
+                  <span class="detail-meta-text">{{ selectedOrganization.industry }} | {{ selectedOrganization.country
+                    }}</span>
                 </div>
               </div>
             </div>
@@ -246,9 +361,7 @@
                 <i class="far fa-edit"></i>
                 Edit
               </button>
-              <button
-                class="btn btn-outline btn-sm"
-                type="button"
+              <button class="btn btn-outline btn-sm" type="button"
                 [class.btn-amber]="selectedOrganization.status === 'Active'"
                 [class.btn-emerald]="selectedOrganization.status !== 'Active'"
                 (click)="toggleTenant(selectedOrganization)">
@@ -273,24 +386,46 @@
             <div class="detail-main">
               <div class="info-grid">
                 <div class="info-cell"><span>Plan</span><strong>{{ selectedOrganization.plan }}</strong></div>
-                <div class="info-cell"><span>Domain</span><strong [title]="selectedOrganization.domain">{{ selectedOrganization.domain }}</strong></div>
-                <div class="info-cell"><span>Renewal</span><strong>{{ formatDate(selectedOrganization.renewalDate) }}</strong></div>
-                <div class="info-cell"><span>Users</span><strong>{{ selectedOrganization.users }} / {{ selectedOrganization.maxUsers }}</strong></div>
-                <div class="info-cell"><span>MRR</span><strong>{{ formatMoney(selectedOrganization.monthlyRevenue, selectedOrganization.currency) }}</strong></div>
-                <div class="info-cell"><span>Created</span><strong>{{ formatDate(selectedOrganization.createdDate) }}</strong></div>
-                <div class="info-cell"><span>Admin</span><strong [title]="selectedOrganization.adminEmail">{{ selectedOrganization.adminEmail }}</strong></div>
+                <div class="info-cell"><span>Domain</span><strong [title]="selectedOrganization.domain">{{
+                    selectedOrganization.domain }}</strong></div>
+                <div class="info-cell"><span>Renewal</span><strong>{{ formatDate(selectedOrganization.renewalDate)
+                    }}</strong></div>
+                <div class="info-cell"><span>Users</span><strong>{{ selectedOrganization.users }} / {{
+                    selectedOrganization.maxUsers }}</strong></div>
+                <div class="info-cell"><span>MRR</span><strong>{{ formatMoney(selectedOrganization.monthlyRevenue,
+                    selectedOrganization.currency) }}</strong></div>
+                <div class="info-cell"><span>Created</span><strong>{{ formatDate(selectedOrganization.createdDate)
+                    }}</strong></div>
+                <div class="info-cell"><span>Admin</span><strong [title]="selectedOrganization.adminEmail">{{
+                    selectedOrganization.adminEmail }}</strong></div>
                 <div class="info-cell"><span>Country</span><strong>{{ selectedOrganization.country }}</strong></div>
                 <div class="info-cell"><span>Industry</span><strong>{{ selectedOrganization.industry }}</strong></div>
+                <div class="info-cell">
+                  <span>Contact Person</span>
+                  <strong>{{ selectedOrganization.contactPerson }}</strong>
+                </div>
+
+                <div class="info-cell">
+                  <span>Contact Email</span>
+                  <strong>{{ selectedOrganization.contactEmail }}</strong>
+                </div>
+
+                <div class="info-cell">
+                  <span>Contact Mobile</span>
+                  <strong>{{ selectedOrganization.contactMobile }}</strong>
+                </div>
               </div>
 
               <div class="usage-card">
                 <p class="usage-title">Storage Usage</p>
                 <div class="usage-head">
                   <span>{{ selectedOrganization.storageUsedGB }} GB / {{ selectedOrganization.maxStorageGB }} GB</span>
-                  <strong [ngClass]="getUsageClass(getStoragePercent(selectedOrganization)) + '-text'">{{ getStoragePercent(selectedOrganization) }}%</strong>
+                  <strong [ngClass]="getUsageClass(getStoragePercent(selectedOrganization)) + '-text'">{{
+                    getStoragePercent(selectedOrganization) }}%</strong>
                 </div>
                 <div class="usage-track">
-                  <span class="usage-fill" [ngClass]="getUsageClass(getStoragePercent(selectedOrganization))" [style.width.%]="getStoragePercent(selectedOrganization)"></span>
+                  <span class="usage-fill" [ngClass]="getUsageClass(getStoragePercent(selectedOrganization))"
+                    [style.width.%]="getStoragePercent(selectedOrganization)"></span>
                 </div>
               </div>
 
@@ -312,7 +447,8 @@
                 <div class="branding-row">
                   <span class="branding-swatch" [style.background]="selectedOrganization.brandingColor"></span>
                   <span>
-                    <strong class="branding-hex" [style.color]="selectedOrganization.brandingColor">{{ selectedOrganization.brandingColor }}</strong>
+                    <strong class="branding-hex" [style.color]="selectedOrganization.brandingColor">{{
+                      selectedOrganization.brandingColor }}</strong>
                     <small>Primary color</small>
                   </span>
                 </div>
@@ -330,10 +466,7 @@
                   Edit Details
                   <i class="fas fa-arrow-up-right-from-square"></i>
                 </button>
-                <button
-                  class="quick-action"
-                  type="button"
-                  [class.qa-amber]="selectedOrganization.status === 'Active'"
+                <button class="quick-action" type="button" [class.qa-amber]="selectedOrganization.status === 'Active'"
                   [class.qa-emerald]="selectedOrganization.status !== 'Active'"
                   (click)="toggleTenant(selectedOrganization)">
                   <i class="fas fa-shield-alt"></i>
@@ -353,17 +486,15 @@
             </div>
 
             <div class="features-grid">
-              <button
-                class="feature-card"
-                type="button"
-                *ngFor="let feature of allFeatures"
+              <button class="feature-card" type="button" *ngFor="let feature of allFeatures"
                 [class.feature-card-on]="selectedOrganization.features[feature.key]"
                 (click)="toggleFeature(feature.key)">
                 <span class="feature-card-top">
                   <span class="feature-card-icon" [class.fci-on]="selectedOrganization.features[feature.key]">
                     <i class="fas" [ngClass]="feature.icon"></i>
                   </span>
-                  <i class="fas feature-card-toggle" [ngClass]="selectedOrganization.features[feature.key] ? 'fa-toggle-on on' : 'fa-toggle-off off'"></i>
+                  <i class="fas feature-card-toggle"
+                    [ngClass]="selectedOrganization.features[feature.key] ? 'fa-toggle-on on' : 'fa-toggle-off off'"></i>
                 </span>
                 <strong>{{ feature.label }}</strong>
               </button>

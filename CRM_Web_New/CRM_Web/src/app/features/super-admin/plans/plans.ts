@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ControlsystemService } from '../services/controlsystem-service';
 import { Spinnerservice } from '../../../core/services/spinnerservice';
 import { Alertservice } from '../../../core/services/alertservice';
+import { ChangeDetectorRef } from '@angular/core';
 
 type PlanStatus = 'Active' | 'Draft';
 type PlanAccent = 'slate' | 'blue' | 'purple' | 'rose';
@@ -63,8 +64,8 @@ export class Plans {
 
   private activityTimer: ReturnType<typeof setTimeout> | null = null;
 
-  constructor(private router: Router,  private controlService: ControlsystemService,  private spinner: Spinnerservice,
-  private alertService: Alertservice) { }
+  constructor(private router: Router, private controlService: ControlsystemService, private spinner: Spinnerservice,
+  private alertService: Alertservice, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getPlans();
@@ -105,6 +106,7 @@ getPlans(): void {
           features: this.convertFeatures(x.features)
 
         }));
+        this.cdr.detectChanges();
 
       }
       else {
