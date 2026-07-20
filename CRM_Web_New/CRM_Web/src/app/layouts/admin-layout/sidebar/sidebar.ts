@@ -143,6 +143,7 @@ export class Sidebar {
     {
       label: 'Setup',
       icon: 'fa-gears',
+      route: '/master-data',
       group: 'Setup',
       expanded: false,
       children: [

@@ -10,6 +10,9 @@ import {
 import {
   provideClientHydration
 } from '@angular/platform-browser';
+import {
+  provideAnimations
+} from '@angular/platform-browser/animations';
 
 import {
   provideHttpClient,
@@ -29,6 +32,8 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
 
     provideRouter(routes),
+
+    provideAnimations(),
 
     // provideClientHydration(),
 

@@ -30,6 +30,12 @@ export const routes: Routes = [
           import('./features/dashboard/pages/company/company')
             .then(m => m.Company)
       },
+      {
+        path: 'master-data',
+        loadComponent: () =>
+          import('./features/super-admin/master-data/master-data')
+            .then(m => m.MasterData)
+      },
        
       {
          path: 'region',
