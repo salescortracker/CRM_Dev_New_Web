@@ -98,4 +98,15 @@ getOrganizationById(id: number): Observable<any> {
     `${this.planApiUrl}/getorganizationbyid/${id}`
   );
 }
+
+
+// ================= AUDIT LOGS =================
+private auditLogsApiUrl =
+`${environment.apiUrl}/Auth`;
+
+getAuditLogs(): Observable<any> {
+  return this.http.get(
+    `${this.auditLogsApiUrl}/getallauditlogs`
+  );
+}
 }
