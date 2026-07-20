@@ -68,6 +68,22 @@ export const routes: Routes = [
         loadComponent: () => import('./features/dashboard/pages/organizations/branches/branches')
           .then(m => m.Branches)
       },
+      {
+        path: 'plans',
+        loadComponent: () => import('./features/super-admin/plans/plans')
+          .then(m => m.Plans)
+      },
+      {
+        path: 'organizations',
+        loadComponent: () => import('./features/super-admin/organizations/organizations')
+          .then(m => m.Organizations)
+      },
+     
+      {
+        path: 'subscriptions',
+        loadComponent: () => import('./features/super-admin/subscriptions/subscriptions')
+          .then(m => m.Subscriptions)
+      },
       { path: '**', redirectTo: 'dashboard' }
     ]
   },
