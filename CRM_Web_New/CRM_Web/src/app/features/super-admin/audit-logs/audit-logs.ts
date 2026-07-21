@@ -2,6 +2,10 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { ControlsystemService } from '../services/controlsystem-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Pagination } from '../../../shared/pagination/pagination';
+import { Exportservice } from '../../../core/services/exportservice';
+import { Export } from '../../../shared/export/export';
+// import { Pagination } from '../../../../shared/pagination/pagination';
 
 export interface AuditLogEntry {
   id: string;
@@ -17,7 +21,7 @@ export type AuditSeverity = 'Info' | 'Warning' | 'Critical';
 
 @Component({
   selector: 'app-audit-logs',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,Pagination,Export],
   templateUrl: './audit-logs.html',
   styleUrl: './audit-logs.css',
 })
@@ -27,8 +31,13 @@ export class AuditLogs {
   searchTerm = '';
   selectedModule = '';
   selectedSeverity: AuditSeverity | '' = '';
+  page = 1;
 
-  constructor(private audit: ControlsystemService, private cdr: ChangeDetectorRef) { }
+pageSize = 5;
+
+totalRecords = 0;
+
+  constructor(private audit: ControlsystemService, private cdr: ChangeDetectorRef, private exportService: Exportservice) { }
 
   ngOnInit(): void {
     this.refreshLogs(false);
@@ -72,6 +81,7 @@ export class AuditLogs {
     this.searchTerm = '';
     this.selectedModule = '';
     this.selectedSeverity = '';
+      this.page = 1;
   }
 
   refreshLogs(showMessage = true): void {
@@ -88,7 +98,7 @@ export class AuditLogs {
 
             action: x.actionType,
 
-            user: x.createdBy?.toString() || '-',
+            user: x.userId?.toString() || '-',
 
             severity: this.getSeverity(x.actionType),
 
@@ -99,6 +109,9 @@ export class AuditLogs {
             relatedRoute: ''
 
           }));
+
+          this.page = 1;
+          this.totalRecords = this.logs.length;
           this.cdr.detectChanges();
 
           if (showMessage) {
@@ -159,4 +172,83 @@ runMonitorCheck(): void {
     return `${log.actionType} performed on ${log.tableName} (Record Id : ${log.recordId})`;
 
   }
+  get pagedLogs(): AuditLogEntry[] {
+
+  const start = (this.page - 1) * this.pageSize;
+
+  return this.filteredLogs.slice(
+
+    start,
+
+    start + this.pageSize
+
+  );
+
+}
+changePage(page: number) {
+
+  this.page = page;
+
+}
+
+changePageSize(size: number) {
+
+  this.pageSize = size;
+
+  this.page = 1;
+
+}
+
+downloadExcel() {
+
+  const data = this.filteredLogs.map(x => ({
+    Time: x.createdAt,
+    Module: x.module,
+    Action: x.action,
+    User: x.user,
+    Severity: x.severity,
+    Details: x.detail
+  }));
+
+  this.exportService.exportToExcel(
+      data,
+      'AuditLogs'
+  );
+
+}
+downloadPdf() {
+
+  const headers = [
+    'Time',
+    'Module',
+    'Action',
+    'User',
+    'Severity',
+    'Details'
+  ];
+
+  const body = this.filteredLogs.map(x => [
+
+    new Date(x.createdAt).toLocaleString(),
+
+    x.module,
+
+    x.action,
+
+    x.user,
+
+    x.severity,
+
+    x.detail
+
+  ]);
+
+  this.exportService.exportToPdf(
+      'Audit Logs Report',
+      headers,
+      body,
+      'AuditLogs'
+  );
+
+}
 }
