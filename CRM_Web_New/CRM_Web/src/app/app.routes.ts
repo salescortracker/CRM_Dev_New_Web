@@ -84,6 +84,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/subscriptions/subscriptions')
           .then(m => m.Subscriptions)
       },
+      {
+        path: 'audit-logs',
+        loadComponent: () => import('./features/super-admin/audit-logs/audit-logs')
+          .then(m => m.AuditLogs)
+      },
       { path: '**', redirectTo: 'dashboard' }
     ]
   },

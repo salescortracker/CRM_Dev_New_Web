@@ -131,6 +131,12 @@ export class Sidebar {
           icon: 'fa-receipt',
           route: '/subscriptions',
           group: 'Administration'
+        },
+        {
+          label: 'Audit Logs',
+          icon: 'fa-file-alt',
+          route: '/audit-logs',
+          group: 'Administration'
         }
 
       ]
@@ -171,6 +177,12 @@ export class Sidebar {
           label: 'Designation',
           icon: 'fa-id-badge',
           route: '/designation',
+          group: 'Setup'
+        },
+        {
+          label: 'Master Data',
+          icon: 'fa-database',
+          route: '/master-data',
           group: 'Setup'
         }
 
