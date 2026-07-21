@@ -45,43 +45,43 @@ export class Sidebar {
       group: 'CRM Flow'
     },
 
-    {
-      label: 'CRM',
-      icon: 'fa-users',
-      group: 'CRM Flow',
-      expanded: false,
-      children: [
+    // {
+    //   label: 'CRM',
+    //   icon: 'fa-users',
+    //   group: 'CRM Flow',
+    //   expanded: false,
+    //   children: [
 
-        {
-          label: 'Leads',
-          icon: 'fa-user-plus',
-          route: '/leads',
-          group: 'CRM Flow'
-        },
+    //     {
+    //       label: 'Leads',
+    //       icon: 'fa-user-plus',
+    //       route: '/leads',
+    //       group: 'CRM Flow'
+    //     },
 
-        {
-          label: 'Contacts',
-          icon: 'fa-address-book',
-          route: '/contacts',
-          group: 'CRM Flow'
-        },
+    //     {
+    //       label: 'Contacts',
+    //       icon: 'fa-address-book',
+    //       route: '/contacts',
+    //       group: 'CRM Flow'
+    //     },
 
-        {
-          label: 'Accounts',
-          icon: 'fa-building',
-          route: '/accounts',
-          group: 'CRM Flow'
-        },
+    //     {
+    //       label: 'Accounts',
+    //       icon: 'fa-building',
+    //       route: '/accounts',
+    //       group: 'CRM Flow'
+    //     },
 
-        {
-          label: 'Opportunities',
-          icon: 'fa-handshake',
-          route: '/opportunities',
-          group: 'CRM Flow'
-        }
+    //     {
+    //       label: 'Opportunities',
+    //       icon: 'fa-handshake',
+    //       route: '/opportunities',
+    //       group: 'CRM Flow'
+    //     }
 
-      ]
-    },
+    //   ]
+    // },
 
     //-----------------------------------
     // ADMINISTRATION
