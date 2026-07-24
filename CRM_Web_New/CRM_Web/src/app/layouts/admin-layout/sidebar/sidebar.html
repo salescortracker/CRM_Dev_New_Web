@@ -1,5 +1,4 @@
-<aside class="crm-sidebar"
-       [class.collapsed]="isCollapsed">
+<aside class="crm-sidebar" [class.collapsed]="isCollapsed">
 
     <div class="brand">
 
@@ -13,9 +12,7 @@
 
         </div>
 
-        <button
-            class="toggle-btn"
-            (click)="toggleSidebar()">
+        <button class="toggle-btn" (click)="toggleSidebar()">
 
             <i class="fa-solid fa-bars"></i>
 
@@ -25,9 +22,7 @@
 
     <nav>
 
-        <div
-            *ngFor="let group of menuGroups"
-            class="menu-group">
+        <div *ngFor="let group of menuGroups" class="menu-group">
 
             <h6 *ngIf="!isCollapsed">
 
@@ -39,15 +34,11 @@
 
                 <!-- Parent -->
 
-                <div
-                    class="menu-item"
-                    (click)="onMenuClick(menu)">
+                <div class="menu-item" (click)="onMenuClick(menu)">
 
                     <div class="left">
 
-                        <i
-                            class="fa-solid"
-                            [ngClass]="menu.icon">
+                        <i class="fa-solid" [ngClass]="menu.icon">
                         </i>
 
                         <span *ngIf="!isCollapsed">
@@ -58,9 +49,7 @@
 
                     </div>
 
-                    <i
-                        *ngIf="menu.children?.length && !isCollapsed"
-                        class="fa-solid"
+                    <i *ngIf="menu.children?.length && !isCollapsed" class="fa-solid"
                         [ngClass]="menu.expanded ? 'fa-chevron-down':'fa-chevron-right'">
                     </i>
 
@@ -68,25 +57,39 @@
 
                 <!-- Submenu -->
 
-                <div
-                    class="submenu"
-                    *ngIf="menu.expanded && menu.children && !isCollapsed">
+                <div class="submenu" *ngIf="menu.expanded && menu.children && !isCollapsed">
 
-                    <div
-                        class="submenu-item"
-                        *ngFor="let child of menu.children"
-                        (click)="onChildClick(child)">
+                    <div *ngFor="let child of menu.children">
 
-                        <i
-                            class="fa-solid"
-                            [ngClass]="child.icon">
-                        </i>
+                        <!-- Second Level -->
 
-                        <span>
+                        <div class="submenu-item" (click)="onMenuClick(child)">
 
-                            {{child.label}}
+                            <i class="fa-solid" [ngClass]="child.icon">
+                            </i>
 
-                        </span>
+                            <span>{{child.label}}</span>
+
+                            <i *ngIf="child.children?.length" class="fa-solid"
+                                [ngClass]="child.expanded ? 'fa-chevron-down':'fa-chevron-right'">
+                            </i>
+
+                        </div>
+
+                        <!-- Third Level -->
+
+                        <div class="submenu level2" *ngIf="child.expanded && child.children">
+
+                            <div class="submenu-item" *ngFor="let sub of child.children" (click)="onChildClick(sub)">
+
+                                <i class="fa-solid" [ngClass]="sub.icon">
+                                </i>
+
+                                <span>{{sub.label}}</span>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
