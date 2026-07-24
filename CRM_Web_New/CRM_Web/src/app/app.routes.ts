@@ -64,7 +64,7 @@ export const routes: Routes = [
           .then(m => m.Roles)
       },
       {
-        path: 'organizations/branches',
+        path: 'branches',
         loadComponent: () => import('./features/dashboard/pages/organizations/branches/branches')
           .then(m => m.Branches)
       },
@@ -89,6 +89,22 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/audit-logs/audit-logs')
           .then(m => m.AuditLogs)
       },
+      {
+        path: 'login-sessions',
+        loadComponent: () => import('./features/super-admin/login-sessions/login-sessions')
+          .then(m => m.LoginSessions)
+      },
+      {
+        path: 'backup-recovery',
+        loadComponent: () => import('./features/super-admin/backup-recovery/backup-recovery')
+          .then(m => m.BackupRecovery)
+      },
+      {
+        path: 'notifications',
+        loadComponent: () => import('./features/super-admin/notifications/notifications')
+          .then(m => m.Notifications)
+      },
+      
       { path: '**', redirectTo: 'dashboard' }
     ]
   },
