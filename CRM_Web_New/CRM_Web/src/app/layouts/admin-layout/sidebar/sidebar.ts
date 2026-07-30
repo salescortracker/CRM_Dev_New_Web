@@ -100,6 +100,12 @@ export class Sidebar {
           route: '/company',
           group: 'Administration'
         },
+         {
+          label: 'Company Administrators',
+          icon: 'fa-building',
+          route: '/company',
+          group: 'Administration'
+        },
         {
           label: 'Regions',
           icon: 'fa-building',
@@ -112,6 +118,20 @@ export class Sidebar {
           route: '/branches',
           group: 'Administration'
         },
+         {
+          label: 'Business Units (Optional)',
+          icon: 'fa-building',
+          route: '/branches',
+          group: 'Administration'
+        },
+         {
+          label: ' Company Settings',
+          icon: 'fa-building',
+          route: '/branches',
+          group: 'Administration'
+        },
+        
+        
 
       ]
 
@@ -157,11 +177,17 @@ export class Sidebar {
           icon: 'fa-map-location-dot',
           // route: '/regions',
           group: 'Administration'
+        },
+        {
+          label: ' Coupons & Discounts',
+          icon: 'fa-map-location-dot',
+          // route: '/regions',
+          group: 'Administration'
         }
       ]
     },
     {
-      label: 'User Management',
+      label: 'User & Access Management',
       icon: 'fa-building',
       group: 'Administration',
       expanded: false,
@@ -202,12 +228,83 @@ export class Sidebar {
           // route: '/regions',
           group: 'Administration'
         }
+        ,
+        {
+          label: 'Access Policies',
+          icon: 'fa-map-location-dot',
+          // route: '/regions',
+          group: 'Administration'
+        }
       ]
     },
     {
       label: 'CRM Module Configuration',
       icon: 'fa-chart-line',
-      group: 'Administration'
+      group: 'Administration',
+       expanded: false,
+      children: [
+        {
+          label: 'Lead Settings',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+         {
+          label: 'Pipeline Settings',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+        {
+          label: 'Opportunity Stages',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+         {
+          label: 'Activity Types',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+        {
+          label: 'Sources',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+        {
+          label: 'Industries',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+        {
+          label: 'Territories',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+         {
+          label: 'Sales Targets',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+        {
+          label: 'Number Series',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+        {
+          label: 'Custom Fields',
+          icon: 'fa-building',
+          // route: '/plans',
+          group: 'Administration'
+        },
+      ]
+      
     },
     {
       label: 'Integration Management',
@@ -218,7 +315,7 @@ export class Sidebar {
         {
           label: 'Email Configuration',
           icon: 'fa-building',
-          // route: '/plans',
+           route: '/email-configuration',
           group: 'Administration'
         },
         {
@@ -272,25 +369,43 @@ export class Sidebar {
         {
           label: ' Workflow Rules',
           icon: 'fa-building',
-          // route: '/backup-recovery',
+           route: '/workflow-rules',
           group: 'Administration'
         },
         {
           label: 'Approval Workflow',
           icon: 'fa-building',
-          // route: '/backup-recovery',
+          route: '/approval-workflow',
           group: 'Administration'
         },
         {
           label: 'Auto Assignment',
           icon: 'fa-building',
-          // route: '/backup-recovery',
+          route: '/auto-assignment',
           group: 'Administration'
         },
         {
           label: 'Escalation Rules',
           icon: 'fa-building',
-          // route: '/backup-recovery',
+          route: '/escalation-rules',
+          group: 'Administration'
+        },
+        {
+          label: 'SLA Rules',
+          icon: 'fa-building',
+           route: '/sla-rules',
+          group: 'Administration'
+        },
+         {
+          label: 'Email Automation',
+          icon: 'fa-building',
+          route: '/email-automation',
+          group: 'Administration'
+        },
+        {
+          label: 'Scheduled Jobs',
+          icon: 'fa-building',
+          route: '/scheduled-jobs',
           group: 'Administration'
         }
       ]
@@ -308,6 +423,36 @@ export class Sidebar {
           icon: 'fa-building',
           route: '/login-sessions',
           group: 'Administration'
+        },
+         {
+          label: 'Password Policy',
+          icon: 'fa-building',
+          route: '/password-policy',
+          group: 'Administration'
+        },
+          {
+          label: 'MFA',
+          icon: 'fa-building',
+          route: '/mfa',
+          group: 'Administration'
+        },
+         {
+          label: 'IP Restrictions',
+          icon: 'fa-building',
+          route: '/ip-restrictions',
+          group: 'Administration'
+        },
+         {
+          label: 'Device Management',
+          icon: 'fa-building',
+          route: '/device-management',
+          group: 'Administration'
+        },
+         {
+          label: 'Security Logs',
+          icon: 'fa-building',
+          route: '/security-logs',
+          group: 'Administration'
         }
       ]
     },
@@ -315,43 +460,233 @@ export class Sidebar {
       label: 'Notification Management',
       icon: 'fa-chart-line',
       route: '/notifications',
-      group: 'Administration'
+      group: 'Administration',
+      expanded: false,
+
+      children: [
+        {
+          label: 'Email Templates',
+          icon: 'fa-building',
+          route: '/email-notification',
+          group: 'Administration'
+        },
+         {
+          label: ' SMS Templates',
+          icon: 'fa-building',
+          route: '/sms-notification',
+          group: 'Administration'
+        },
+         {
+          label: 'WhatsApp Templates',
+          icon: 'fa-building',
+          route: '/whatsapp-notification',
+          group: 'Administration'
+        },
+          {
+          label: 'Push Notifications',
+          icon: 'fa-building',
+          route: '/push-notification',
+          group: 'Administration'
+        },
+         {
+          label: 'Notification Rules',
+          icon: 'fa-building',
+          route: '/notification-rules',
+          group: 'Administration'
+        },
+      ]
     },
     {
       label: 'Audit & Monitoring',
       icon: 'fa-chart-line',
       route: '/audit-logs',
-      group: 'Administration'
-    },
-    {
-      label: 'Data Management',
-      icon: 'fa-chart-line',
-
       group: 'Administration',
-      expanded: false,
+       expanded: false,
 
       children: [
-
         {
-          label: 'Automated Backup',
+          label: 'Audit Logs',
           icon: 'fa-building',
-          route: '/backup-recovery',
+          route: '/audit-logs',
           group: 'Administration'
-        }
+        },
+         {
+          label: 'Login History',
+          icon: 'fa-building',
+          route: '/login-history',
+          group: 'Administration'
+        },
+         {
+          label: 'API Logs',
+          icon: 'fa-building',
+          route: '/api-logs',
+          group: 'Administration'
+        },
+        {
+          label: 'Error Logs',
+          icon: 'fa-building',
+          route: '/error-logs',
+          group: 'Administration'
+        },
+         {
+          label: 'User Activities',
+          icon: 'fa-building',
+          route: '/user-activities',
+          group: 'Administration'
+        },
       ]
     },
+    // {
+    //   label: 'Data Management',
+    //   icon: 'fa-chart-line',
+
+    //   group: 'Administration',
+    //   expanded: false,
+
+    //   children: [
+
+    //     {
+    //       label: 'Automated Backup',
+    //       icon: 'fa-building',
+    //       route: '/backup-recovery',
+    //       group: 'Administration'
+    //     },
+    //      {
+    //       label: 'Import Data',
+    //       icon: 'fa-building',
+    //       route: '/backup-recovery',
+    //       group: 'Administration'
+    //     },
+    //       {
+    //       label: 'Export Data',
+    //       icon: 'fa-building',
+    //       route: '/backup-recovery',
+    //       group: 'Administration'
+    //     },
+        
+    //   ]
+    // },
 
     {
       label: 'Reports & Analytics',
       icon: 'fa-chart-line',
-      group: 'Administration'
+      group: 'Administration',
+      expanded: false,
+      children: [
+        {
+          label: 'Platform Reports',
+          icon: 'fa-building',
+          route: '/platform-reports',
+          group: 'Administration'
+        },
+        {
+          label: 'Company Reports',
+          icon: 'fa-building',
+          route: '/company-reports',
+          group: 'Administration'
+        },
+        {
+          label: 'Revenue Reports',
+          icon: 'fa-building',
+          route: '/revenue-reports',
+          group: 'Administration'
+        },
+         {
+          label: 'Subscription Reports',
+          icon: 'fa-building',
+          route: '/subscription-reports',
+          group: 'Administration'
+        },
+         {
+          label: 'User Reports',
+          icon: 'fa-building',
+          route: '/backup-recovery',
+          group: 'Administration'
+        },
+         {
+          label: 'Audit Reports',
+          icon: 'fa-building',
+          route: '/audit-reports',
+          group: 'Administration'
+        },
+         {
+          label: 'Custom Reports',
+          icon: 'fa-building',
+          route: '/custom-reports',
+          group: 'Administration'
+        },
+      ]
     },
     {
       label: 'System Settings',
       icon: 'fa-chart-line',
-      group: 'Administration'
+      group: 'Administration',
+       expanded: false,
+      children: [
+        {
+          label: 'General Settings',
+          icon: 'fa-building',
+          route: '/general-settings',
+          group: 'Administration'
+        },
+         {
+          label: 'Branding',
+          icon: 'fa-building',
+          route: '/brands',
+          group: 'Administration'
+        },
+        {
+          label: 'Localization',
+          icon: 'fa-building',
+          route: '/localization',
+          group: 'Administration'
+        },
+         {
+          label: 'Time Zones',
+          icon: 'fa-building',
+          route: '/time-zones',
+          group: 'Administration'
+        },
+        {
+          label: 'Currency',
+          icon: 'fa-building',
+          route: '/currency',
+          group: 'Administration'
+        },
+         {
+          label: 'Fiscal Year',
+          icon: 'fa-building',
+          route: '/fiscal-year',
+          group: 'Administration'
+        },
+         {
+          label: 'Number Formats',
+          icon: 'fa-building',
+          route: '/number-formats',
+          group: 'Administration'
+        },
+        
+          {
+          label: 'File Storage',
+          icon: 'fa-building',
+          route: '/file-storage',
+          group: 'Administration'
+        },
+       
+         {
+          label: 'License',
+          icon: 'fa-building',
+          route: '/license',
+          group: 'Administration'
+        },
+         {
+          label: 'file Upload Document',
+          icon: 'fa-building',
+          route: '/fileupload-document',
+          group: 'Administration'
+        },
+      ]
     },
-
     {
       label: 'Setup',
       icon: 'fa-gears',
@@ -361,16 +696,12 @@ export class Sidebar {
 
   ];
   companyAdminMenus: SidebarMenu[] = [
-
     {
       label: 'Dashboard',
       icon: 'fa-chart-line',
       route: '/dashboard',
       group: 'CRM'
     },
-
-   
-
     {
       label: 'Sales',
       icon: 'fa-money-bill',

@@ -210,10 +210,10 @@ downloadExcel() {
     Details: x.detail
   }));
 
-  this.exportService.exportToExcel(
-      data,
-      'AuditLogs'
-  );
+  // this.exportService.exportToExcel(
+  //     data,
+  //     'AuditLogs'
+  // );
 
 }
 downloadPdf() {
@@ -243,12 +243,12 @@ downloadPdf() {
 
   ]);
 
-  this.exportService.exportToPdf(
-      'Audit Logs Report',
-      headers,
-      body,
-      'AuditLogs'
-  );
+  // // this.exportService.exportToPdf(
+  // //     'Audit Logs Report',
+  // //     headers,
+  // //     body,
+  // //     'AuditLogs'
+  // // );
 
 }
 }
