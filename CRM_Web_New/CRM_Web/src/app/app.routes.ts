@@ -36,20 +36,20 @@ export const routes: Routes = [
           import('./features/super-admin/master-data/master-data')
             .then(m => m.MasterData)
       },
-       
+
       {
-         path: 'region',
-         loadComponent: () =>
+        path: 'region',
+        loadComponent: () =>
           import('./features/pages/region/region').then(m => m.Region)
       },
-      {
-        path: 'menu-access',
-        canActivate: [roleGuard],
-        data: { role: 'Super Admin' },
-        loadComponent: () =>
-          import('./features/super-admin/menu-access/menu-access')
-            .then(m => m.MenuAccess)
-      },
+      // {
+      //   path: 'menu-access',
+      //   canActivate: [roleGuard],
+      //   data: { role: 'Super Admin' },
+      //   loadComponent: () =>
+      //     import('./features/super-admin/menu-access/menu-access')
+      //       .then(m => m.MenuAccess)
+      // },
       {
         path: 'user',
         canActivate: [roleGuard],
@@ -78,7 +78,7 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/organizations/organizations')
           .then(m => m.Organizations)
       },
-     
+
       {
         path: 'subscriptions',
         loadComponent: () => import('./features/super-admin/subscriptions/subscriptions')
@@ -89,22 +89,22 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/audit-logs/audit-logs')
           .then(m => m.AuditLogs)
       },
-       {
+      {
         path: 'login-history',
         loadComponent: () => import('./features/super-admin/login-history/login-history')
           .then(m => m.LoginHistory)
       },
-        {
+      {
         path: 'api-logs',
         loadComponent: () => import('./features/super-admin/api-logs/api-logs')
           .then(m => m.ApiLogs)
       },
-       {
+      {
         path: 'error-logs',
         loadComponent: () => import('./features/super-admin/error-logs/error-logs')
           .then(m => m.ErrorLogs)
       },
-       {
+      {
         path: 'user-activities',
         loadComponent: () => import('./features/super-admin/user-activities/user-activities')
           .then(m => m.UserActivities)
@@ -124,18 +124,18 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/notifications/notifications')
           .then(m => m.Notifications)
       },
-       {
-        path: 'email-configuration',
-        loadComponent: () => import('./features/super-admin/email-configuration/email-configuration')
-          .then(m => m.EmailConfiguration)
-      },
-      
-       {
+      // {
+      //   path: 'email-configuration',
+      //   loadComponent: () => import('./features/super-admin/email-configuration/email-configuration')
+      //     .then(m => m.EmailConfiguration)
+      // },
+
+      {
         path: 'workflow-rules',
         loadComponent: () => import('./features/super-admin/workflow-rules/workflow-rules')
           .then(m => m.WorkflowRules)
       },
-       {
+      {
         path: 'approval-workflow',
         loadComponent: () => import('./features/super-admin/approval-workflow/approval-workflow')
           .then(m => m.ApprovalWorkflow)
@@ -155,12 +155,12 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/sla-rules/sla-rules')
           .then(m => m.SlaRules)
       },
-       {
+      {
         path: 'email-automation',
         loadComponent: () => import('./features/super-admin/email-automation/email-automation')
           .then(m => m.EmailAutomation)
       },
-       {
+      {
         path: 'scheduled-jobs',
         loadComponent: () => import('./features/super-admin/scheduled-jobs/scheduled-jobs')
           .then(m => m.ScheduledJobs)
@@ -175,48 +175,48 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/mfa/mfa')
           .then(m => m.Mfa)
       },
-       {
+      {
         path: 'ip-restrictions',
         loadComponent: () => import('./features/super-admin/ip-restrictions/ip-restrictions')
           .then(m => m.IpRestrictions)
       },
-       {
+      {
         path: 'device-management',
         loadComponent: () => import('./features/super-admin/device-management/device-management')
           .then(m => m.DeviceManagement)
       },
-       {
+      {
         path: 'security-logs',
         loadComponent: () => import('./features/super-admin/security-logs/security-logs')
           .then(m => m.SecurityLogs)
       },
-       {
+      {
         path: 'email-notification',
         loadComponent: () => import('./features/super-admin/email-notification/email-notification')
           .then(m => m.EmailNotification)
       },
-       {
+      {
         path: 'sms-notification',
         loadComponent: () => import('./features/super-admin/sms-notification/sms-notification')
           .then(m => m.SmsNotification)
       },
-      
-       {
+
+      {
         path: 'whatsapp-notification',
         loadComponent: () => import('./features/super-admin/whatsapp-notification/whatsapp-notification')
           .then(m => m.WhatsappNotification)
       },
-       {
+      {
         path: 'push-notification',
         loadComponent: () => import('./features/super-admin/push-notifications/push-notifications')
           .then(m => m.PushNotifications)
       },
-       {
+      {
         path: 'notification-rules',
         loadComponent: () => import('./features/super-admin/notification-rules/notification-rules')
           .then(m => m.NotificationRules)
       },
-        {
+      {
         path: 'platform-reports',
         loadComponent: () => import('./features/super-admin/platform-reports/platform-reports')
           .then(m => m.PlatformReports)
@@ -226,7 +226,7 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/company-reports/company-reports')
           .then(m => m.CompanyReports)
       },
-       {
+      {
         path: 'revenue-reports',
         loadComponent: () => import('./features/super-admin/revenue-reports/revenue-reports')
           .then(m => m.RevenueReports)
@@ -236,17 +236,17 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/subscription-reports/subscription-reports')
           .then(m => m.SubscriptionReports)
       },
-       {
+      {
         path: 'user-reports',
         loadComponent: () => import('./features/super-admin/user-reports/user-reports')
           .then(m => m.UserReports)
       },
-       {
+      {
         path: 'audit-reports',
         loadComponent: () => import('./features/super-admin/audit-reports/audit-reports')
           .then(m => m.AuditReports)
       },
-       {
+      {
         path: 'custom-reports',
         loadComponent: () => import('./features/super-admin/custom-reports/custom-reports')
           .then(m => m.CustomReports)
@@ -256,22 +256,22 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/general-settings/general-settings')
           .then(m => m.GeneralSettings)
       },
-       {
+      {
         path: 'brands',
         loadComponent: () => import('./features/super-admin/brands/brands')
           .then(m => m.Brands)
       },
-       {
+      {
         path: 'localization',
         loadComponent: () => import('./features/super-admin/localization/localization')
           .then(m => m.Localization)
       },
-       {
+      {
         path: 'time-zones',
         loadComponent: () => import('./features/super-admin/time-zones/time-zones')
           .then(m => m.TimeZones)
       },
-       {
+      {
         path: 'currency',
         loadComponent: () => import('./features/super-admin/currency/currency')
           .then(m => m.Currency)
@@ -286,22 +286,369 @@ export const routes: Routes = [
         loadComponent: () => import('./features/super-admin/number-formats/number-formats')
           .then(m => m.NumberFormats)
       },
-       {
+      {
         path: 'file-storage',
         loadComponent: () => import('./features/super-admin/file-storage/file-storage')
           .then(m => m.FileStorage)
       },
-       {
+      {
         path: 'license',
         loadComponent: () => import('./features/super-admin/license/license')
           .then(m => m.License)
       },
-        {
+      {
         path: 'fileupload-document',
         loadComponent: () => import('./features/super-admin/fileupload-document/fileupload-document')
           .then(m => m.FileuploadDocument)
       },
-      
+
+      {
+        path: 'company-administrators',
+        loadComponent: () => import('./features/super-admin/organizations-management/company-administrators/company-administrators')
+          .then(m => m.CompanyAdministrators)
+      },
+      {
+        path: 'business-units',
+        loadComponent: () => import('./features/super-admin/organizations-management/business-units/business-units')
+          .then(m => m.BusinessUnits)
+      },
+      {
+        path: 'company-settings',
+        loadComponent: () => import('./features/super-admin/organizations-management/company-settings/company-settings')
+          .then(m => m.CompanySettings)
+      },
+      {
+        path: 'payment-tracking',
+        loadComponent: () => import('./features/super-admin/subscription-management/payment-tracking/payment-tracking')
+          .then(m => m.PaymentTracking)
+      },
+      {
+        path: 'billing',
+        loadComponent: () => import('./features/super-admin/subscription-management/billing/billing')
+          .then(m => m.Billing)
+      },
+      {
+        path: 'invoices',
+        loadComponent: () => import('./features/super-admin/subscription-management/invoices/invoices')
+          .then(m => m.Invoices)
+      },
+      {
+        path: 'coupons-discounts',
+        loadComponent: () => import('./features/super-admin/subscription-management/coupons-discounts/coupons-discounts')
+          .then(m => m.CouponsDiscounts)
+      },
+      {
+        path: 'departments',
+        loadComponent: () => import('./features/super-admin/users-and-access-management/departments/departments')
+          .then(m => m.Departments)
+      },
+      {
+        path: 'designations',
+        loadComponent: () => import('./features/super-admin/users-and-access-management/designations/designations')
+          .then(m => m.Designations)
+      },
+      {
+        path: 'menu-access',
+        loadComponent: () => import('./features/super-admin/users-and-access-management/menu-access/menu-access')
+          .then(m => m.MenuAccess)
+      },
+      {
+        path: 'roles-permissions',
+        loadComponent: () => import('./features/super-admin/users-and-access-management/roles-permissions/roles-permissions')
+          .then(m => m.RolesPermissions)
+      },
+      {
+        path: 'users',
+        loadComponent: () => import('./features/super-admin/users/users')
+          .then(m => m.Users)
+      },
+      {
+        path: 'teams',
+        loadComponent: () => import('./features/super-admin/users-and-access-management/teams/teams')
+          .then(m => m.Teams)
+      },
+      {
+        path: 'access-policies',
+        loadComponent: () => import('./features/super-admin/users-and-access-management/access-policies/access-policies')
+          .then(m => m.AccessPolicies)
+      },
+
+      {
+        path: 'lead-settings',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/lead-settings/lead-settings')
+          .then(m => m.LeadSettings)
+      },
+      {
+        path: 'pipeline-settings',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/pipeline-settings/pipeline-settings')
+          .then(m => m.PipelineSettings)
+      },
+      {
+        path: 'opportunity-stages',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/opportunity-stages/opportunity-stages')
+          .then(m => m.OpportunityStages)
+      },
+      {
+        path: 'activity-types',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/activity-types/activity-types')
+          .then(m => m.ActivityTypes)
+      },
+      {
+        path: 'sources',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/sources/sources')
+          .then(m => m.Sources)
+      },
+      {
+        path: 'industries',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/industries/industries')
+          .then(m => m.Industries)
+      },
+      {
+        path: 'territories',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/territories/territories')
+          .then(m => m.Territories)
+      },
+      {
+        path: 'salestargets',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/salestargets/salestargets')
+          .then(m => m.Salestargets)
+      },
+      {
+        path: 'number-series',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/number-series/number-series')
+          .then(m => m.NumberSeries)
+      },
+      {
+        path: 'custom-fields',
+        loadComponent: () => import('./features/super-admin/crm-module-configuration/custom-fields/custom-fields')
+          .then(m => m.CustomFields)
+      },
+      {
+        path: 'email-configuration',
+        loadComponent: () => import('./features/super-admin/integration-management/email-configuration/email-configuration')
+          .then(m => m.EmailConfiguration)
+      },
+      {
+        path: 'sms-configuration',
+        loadComponent: () => import('./features/super-admin/integration-management/sms-configuration/sms-configuration')
+          .then(m => m.SmsConfiguration)
+      },
+      {
+        path: 'whatsapp-configuration',
+        loadComponent: () => import('./features/super-admin/integration-management/whatsapp-configuration/whatsapp-configuration')
+          .then(m => m.WhatsappConfiguration)
+      },
+      {
+        path: 'telephony-configuration',
+        loadComponent: () => import('./features/super-admin/integration-management/telephony-configuration/telephony-configuration')
+          .then(m => m.TelephonyConfiguration)
+      },
+      {
+        path: 'api-configuration',
+        loadComponent: () => import('./features/super-admin/integration-management/api-configuration/api-configuration')
+          .then(m => m.ApiConfiguration)
+      },
+      {
+        path: 'webhooks-configuration',
+        loadComponent: () => import('./features/super-admin/integration-management/webhooks-configuration/webhooks-configuration')
+          .then(m => m.WebhooksConfiguration)
+      },
+      {
+        path: 'third-party-integrations',
+        loadComponent: () => import('./features/super-admin/integration-management/third-party-integrations/third-party-integrations')
+          .then(m => m.ThirdPartyIntegrations)
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        path: 'leads',
+        loadComponent: () => import('./features/user/pages/crm/leads/leads')
+          .then(m => m.Leads)
+      },
+      {
+        path: 'accounts',
+        loadComponent: () => import('./features/user/pages/accounts/accounts')
+          .then(m => m.Accounts)
+      },
+      {
+        path: 'contacts',
+        loadComponent: () => import('./features/user/pages/crm/contacts/contacts')
+          .then(m => m.Contacts)
+      },
+      {
+        path: 'opportunities',
+        loadComponent: () => import('./features/user/pages/crm/opportunities/opportunities')
+          .then(m => m.Opportunities)
+      },
+      {
+        path: 'quotations',
+        loadComponent: () => import('./features/user/pages/sales/quotations/quotations')
+          .then(m => m.Quotations)
+      },
+      {
+        path: 'orders',
+        loadComponent: () => import('./features/user/pages/sales/orders/orders')
+          .then(m => m.Orders)
+      },
+      {
+        path: 'invoice-sales',
+        loadComponent: () => import('./features/user/pages/sales/invoice-sales/invoice-sales')
+          .then(m => m.InvoiceSales)
+      },
+      {
+        path: 'payments',
+        loadComponent: () => import('./features/user/pages/sales/payments/payments')
+          .then(m => m.Payments)
+      },
+      {
+        path: 'products',
+        loadComponent: () => import('./features/user/pages/sales/products/products')
+          .then(m => m.Products)
+      },
+      {
+        path: 'calendar',
+        loadComponent: () => import('./features/user/pages/activities/calendar/calendar')
+          .then(m => m.Calendar)
+      },
+      {
+        path: 'tasks',
+        loadComponent: () => import('./features/user/pages/activities/tasks/tasks')
+          .then(m => m.Tasks)
+      },
+      {
+        path: 'meetings',
+        loadComponent: () => import('./features/user/pages/activities/meetings/meetings')
+          .then(m => m.Meetings)
+      },
+      {
+        path: 'calls',
+        loadComponent: () => import('./features/user/pages/activities/calls/calls')
+          .then(m => m.Calls)
+      },
+      {
+        path: 'emails',
+        loadComponent: () => import('./features/user/pages/activities/emails/emails')
+          .then(m => m.Emails)
+      },
+      {
+        path: 'notes',
+        loadComponent: () => import('./features/user/pages/activities/notes/notes')
+          .then(m => m.Notes)
+      },
+      {
+        path: 'campaigns',
+        loadComponent: () => import('./features/user/pages/marketing/campaigns/campaigns')
+          .then(m => m.Campaigns)
+      },
+      {
+        path: 'email-campaigns',
+        loadComponent: () => import('./features/user/pages/marketing/email-campaigns/email-campaigns')
+          .then(m => m.EmailCampaigns)
+      },
+      {
+        path: 'sms-campaigns',
+        loadComponent: () => import('./features/user/pages/marketing/sms-campaigns/sms-campaigns')
+          .then(m => m.SmsCampaigns)
+      },
+      {
+        path: 'whatsapp-campaigns',
+        loadComponent: () => import('./features/user/pages/marketing/whatsapp-campaigns/whatsapp-campaigns')
+          .then(m => m.WhatsappCampaigns)
+      },
+      {
+        path: 'email',
+        loadComponent: () => import('./features/user/pages/communication/email/email')
+          .then(m => m.Email)
+      },
+      {
+        path: 'whatsapp',
+        loadComponent: () => import('./features/user/pages/communication/whatsapp/whatsapp')
+          .then(m => m.Whatsapp)
+      },
+      {
+        path: 'sms',
+        loadComponent: () => import('./features/user/pages/communication/sms/sms')
+          .then(m => m.Sms)
+      },
+      {
+        path: 'tickets',
+        loadComponent: () => import('./features/user/pages/customer-service/tickets/tickets')
+          .then(m => m.Tickets)
+      },
+      {
+        path: 'knowledge-base',
+        loadComponent: () => import('./features/user/pages/customer-service/knowledge-base/knowledge-base')
+          .then(m => m.KnowledgeBase)
+      },
+      {
+        path: 'projects',
+        loadComponent: () => import('./features/user/pages/projects/projects/projects')
+          .then(m => m.Projects)
+      },
+
+      {
+        path: 'milestones',
+        loadComponent: () => import('./features/user/pages/projects/milestones/milestones')
+          .then(m => m.Milestones)
+      },
+      {
+        path: 'project-tasks',
+        loadComponent: () => import('./features/user/pages/projects/project-tasks/project-tasks')
+          .then(m => m.ProjectTasks)
+      },
+      {
+        path: 'project-documents',
+        loadComponent: () => import('./features/user/pages/projects/project-documents/project-documents')
+          .then(m => m.ProjectDocuments)
+      },
+      {
+        path: 'my-documents',
+        loadComponent: () => import('./features/user/pages/documents/my-documents/my-documents')
+          .then(m => m.MyDocuments)
+      },
+      {
+        path: 'shared-documents',
+        loadComponent: () => import('./features/user/pages/documents/shared-documents/shared-documents')
+          .then(m => m.SharedDocuments)
+      },
+      {
+        path: 'my-reports',
+        loadComponent: () => import('./features/user/pages/reports/my-reports/my-reports')
+          .then(m => m.MyReports)
+      },
+      {
+        path: 'team-reports',
+        loadComponent: () => import('./features/user/pages/reports/team-reports/team-reports')
+          .then(m => m.TeamReports)
+      },
+      {
+        path: 'profile',
+        loadComponent: () => import('./features/user/pages/profile/profile/profile')
+          .then(m => m.Profile)
+      },
+      {
+        path: 'sessions',
+        loadComponent: () => import('./features/user/pages/profile/sessions/sessions')
+          .then(m => m.Sessions)
+      },
+      {
+        path: 'mfa',
+        loadComponent: () => import('./features/user/pages/profile/mfa/mfa')
+          .then(m => m.Mfa)
+      },
       { path: '**', redirectTo: 'dashboard' }
     ]
   },
