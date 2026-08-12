@@ -1,0 +1,459 @@
+<div class="container mt-4">
+
+    <!-- ============================= -->
+    <!-- Account Form -->
+    <!-- ============================= -->
+    <div class="card shadow-sm">
+
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">
+                <i class="fa fa-building me-2"></i>
+                Account Management
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <!-- Account Name -->
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">
+                        Account Name
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Account Name"
+                        [(ngModel)]="account.accountName">
+
+                    <div class="text-danger mt-1"
+                         *ngIf="submitted && !account.accountName">
+                        Account Name is required.
+                    </div>
+                </div>
+
+                <!-- Account Number -->
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">
+                        Account Number
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Account Number"
+                        [(ngModel)]="account.accountNumber">
+
+                    <div class="text-danger mt-1"
+                         *ngIf="submitted && !account.accountNumber">
+                        Account Number is required.
+                    </div>
+                </div>
+
+                <!-- Account Type -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Account Type
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <select
+                        class="form-select"
+                        [(ngModel)]="account.accountType">
+
+                        <option value="">Select Type</option>
+                        <option>Customer</option>
+                        <option>Partner</option>
+                        <option>Vendor</option>
+                        <option>Prospect</option>
+
+                    </select>
+
+                    <div class="text-danger mt-1"
+                         *ngIf="submitted && !account.accountType">
+                        Account Type is required.
+                    </div>
+
+                </div>
+
+                <!-- Industry -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Industry
+                    </label>
+
+                    <input
+                        class="form-control"
+                        placeholder="Industry"
+                        [(ngModel)]="account.industry">
+
+                </div>
+
+                <!-- Website -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Website
+                    </label>
+
+                    <input
+                        class="form-control"
+                        placeholder="https://"
+                        [(ngModel)]="account.website">
+
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email Address"
+                        [(ngModel)]="account.email">
+
+                </div>
+
+                <!-- Phone -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Phone
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Phone Number"
+                        [(ngModel)]="account.phone">
+
+                </div>
+
+                <!-- Account Owner -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Account Owner
+                    </label>
+
+                    <input
+                        class="form-control"
+                        placeholder="Owner Name"
+                        [(ngModel)]="account.owner">
+
+                </div>
+
+                <!-- Employees -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Employees
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Employees"
+                        [(ngModel)]="account.employees">
+
+                </div>
+
+                <!-- Annual Revenue -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Annual Revenue
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Annual Revenue"
+                        [(ngModel)]="account.revenue">
+
+                </div>
+
+                <!-- Rating -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Rating
+                    </label>
+
+                    <select
+                        class="form-select"
+                        [(ngModel)]="account.rating">
+
+                        <option value="">Select Rating</option>
+                        <option>Hot</option>
+                        <option>Warm</option>
+                        <option>Cold</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Status -->
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Status
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <select
+                        class="form-select"
+                        [(ngModel)]="account.status">
+
+                        <option value="">Select Status</option>
+                        <option>Active</option>
+                        <option>Inactive</option>
+
+                    </select>
+
+                    <div class="text-danger mt-1"
+                         *ngIf="submitted && !account.status">
+                        Status is required.
+                    </div>
+
+                </div>
+
+                <!-- Billing Address -->
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Billing Address
+                    </label>
+
+                    <textarea
+                        rows="3"
+                        class="form-control"
+                        placeholder="Billing Address"
+                        [(ngModel)]="account.billingAddress">
+                    </textarea>
+
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Shipping Address
+                    </label>
+
+                    <textarea
+                        rows="3"
+                        class="form-control"
+                        placeholder="Shipping Address"
+                        [(ngModel)]="account.shippingAddress">
+                    </textarea>
+
+                </div>
+
+                <!-- Active -->
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        <input
+                            type="checkbox"
+                            class="form-check-input me-2"
+                            [(ngModel)]="account.isActive">
+
+                        Active
+                    </label>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <button
+                class="btn btn-danger me-2"
+                (click)="saveAccount()">
+
+                <i class="fa fa-save me-1"></i>
+
+                {{isEdit ? 'Update' : 'Save'}}
+
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                (click)="clear()">
+
+                <i class="fa fa-eraser me-1"></i>
+
+                Clear
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ============================= -->
+    <!-- Search -->
+    <!-- ============================= -->
+
+    <div class="row mt-4 mb-3">
+
+        <div class="col-md-4">
+
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Search Account..."
+                [(ngModel)]="searchText">
+
+        </div>
+
+    </div>
+
+    <!-- ============================= -->
+    <!-- Account Table -->
+    <!-- ============================= -->
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover align-middle">
+
+            <thead class="table-danger">
+
+                <tr>
+
+                    <th width="60">#</th>
+
+                    <th>Account Name</th>
+
+                    <th>Account No.</th>
+
+                    <th>Type</th>
+
+                    <th>Industry</th>
+
+                    <th>Owner</th>
+
+                    <th>Email</th>
+
+                    <th>Phone</th>
+
+                    <th>Status</th>
+
+                    <th width="150">Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr *ngIf="pagedAccounts.length==0">
+
+                    <td colspan="10"
+                        class="text-center text-muted">
+
+                        No Accounts Found
+
+                    </td>
+
+                </tr>
+
+                <tr
+                    *ngFor="let item of pagedAccounts;let i=index">
+
+                    <td>
+                        {{((page-1)*pageSize)+i+1}}
+                    </td>
+
+                    <td>
+                        {{item.accountName}}
+                    </td>
+
+                    <td>
+                        {{item.accountNumber}}
+                    </td>
+
+                    <td>
+                        {{item.accountType}}
+                    </td>
+
+                    <td>
+                        {{item.industry}}
+                    </td>
+
+                    <td>
+                        {{item.owner}}
+                    </td>
+
+                    <td>
+                        {{item.email}}
+                    </td>
+
+                    <td>
+                        {{item.phone}}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="badge"
+                            [ngClass]="item.isActive ? 'bg-success':'bg-secondary'">
+
+                            {{item.isActive ? 'Active':'Inactive'}}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-warning btn-sm me-2"
+                            (click)="edit(item.accountId)">
+
+                            <i class="fa fa-edit"></i>
+
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-sm"
+                            (click)="delete(item.accountId)">
+
+                            <i class="fa fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- ============================= -->
+    <!-- Pagination -->
+    <!-- ============================= -->
+
+    <app-pagination
+        [page]="page"
+        [pageSize]="pageSize"
+        [totalRecords]="filteredAccounts.length"
+        (pageChanged)="changePage($event)"
+        (pageSizeChanged)="changePageSize($event)">
+    </app-pagination>
+
+</div>
