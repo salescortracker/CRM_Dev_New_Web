@@ -239,7 +239,7 @@ export class Sidebar {
     },
     {
       label: 'CRM Module Configuration',
-      icon: 'fa-chart-line',
+      icon: 'fa-sliders',
       group: 'Administration',
       expanded: false,
       children: [
@@ -359,7 +359,7 @@ export class Sidebar {
     },
     {
       label: 'Workflow & Automation',
-      icon: 'fa-chart-line',
+      icon: 'fa-gears',
 
       group: 'Administration',
       expanded: false,
@@ -412,7 +412,7 @@ export class Sidebar {
     },
     {
       label: 'Security Center',
-      icon: 'fa-chart-line',
+      icon: 'fa-shield-halved',
 
       group: 'Administration',
       expanded: false,
@@ -458,7 +458,7 @@ export class Sidebar {
     },
     {
       label: 'Notification Management',
-      icon: 'fa-chart-line',
+      icon: 'fa-bell',
       route: '/notifications',
       group: 'Administration',
       expanded: false,
@@ -498,7 +498,7 @@ export class Sidebar {
     },
     {
       label: 'Audit & Monitoring',
-      icon: 'fa-chart-line',
+      icon: 'fa-clipboard-check',
       route: '/audit-logs',
       group: 'Administration',
       expanded: false,
@@ -569,7 +569,7 @@ export class Sidebar {
 
     {
       label: 'Reports & Analytics',
-      icon: 'fa-chart-line',
+      icon: 'fa-chart-simple',
       group: 'Administration',
       expanded: false,
       children: [
@@ -619,7 +619,7 @@ export class Sidebar {
     },
     {
       label: 'System Settings',
-      icon: 'fa-chart-line',
+      icon: 'fa-screwdriver-wrench',
       group: 'Administration',
       expanded: false,
       children: [
@@ -691,11 +691,12 @@ export class Sidebar {
       label: 'Setup',
       icon: 'fa-gears',
       group: 'Setup',
+      route: '/master-data',
 
     }
 
   ];
-  companyAdminMenus: SidebarMenu[] = [
+   companyAdminMenus: SidebarMenu[] = [
     {
       label: 'Dashboard',
       icon: 'fa-chart-line',
@@ -703,227 +704,501 @@ export class Sidebar {
       group: 'CRM'
     },
     {
-      label: 'Sales',
-      icon: 'fa-money-bill',
+      label: 'Organization',
+      icon: 'fa-building',
       group: 'CRM',
       expanded: false,
       children: [
-        {
-          label: 'Leads',
-          icon: 'fa-user-plus',
-          route: '/leads',
-          group: 'CRM'
-        },
-        {
-          label: 'Opportunities',
-          icon: 'fa-handshake',
-          route: '/opportunities',
-          group: 'CRM'
-        },
-        {
-          label: 'Deals',
-          icon: 'fa-deals',
-          group: 'CRM'
-        },
-
-        {
-          label: 'Quotes',
-          icon: 'fa-file-lines',
-          route: '/quotes',
-          group: 'CRM'
-        },
-        {
-          label: 'Orders',
-          icon: 'fa-cart-shopping',
-          route: '/orders',
-          group: 'CRM'
-        },
-        {
-          label: 'Invoices',
-          icon: 'fa-file-invoice',
-          route: '/invoices',
-          group: 'CRM'
-        },
-        {
-          label: 'Sales Pipeline',
-          icon: 'fa-sales',
-          group: 'CRM'
-        }
-
+        { label: 'Company Profile', icon: 'fa-building-user', route: '/company-profile', group: 'CRM' },
+        { label: 'Branches', icon: 'fa-code-branch', route: '/branches', group: 'CRM' },
+        { label: 'Business Units', icon: 'fa-sitemap', route: '/business-units', group: 'CRM' },
+        { label: 'Departments', icon: 'fa-users-rectangle', route: '/departments', group: 'CRM' },
+        { label: 'Designations', icon: 'fa-id-badge', route: '/designations', group: 'CRM' },
+        { label: 'Teams', icon: 'fa-people-group', route: '/teams', group: 'CRM' },
+        { label: 'Territories', icon: 'fa-map-location-dot', route: '/territories', group: 'CRM' },
+        { label: 'Business Hours', icon: 'fa-business-time', route: '/business-hours', group: 'CRM' },
+        { label: 'Holiday Calendar', icon: 'fa-calendar-days', route: '/holiday-calendar', group: 'CRM' }
       ]
-
     },
     {
-      label: 'Customer',
+      label: 'User & Access Management',
       icon: 'fa-users',
       group: 'CRM',
       expanded: false,
       children: [
-
-
-        {
-          label: 'Contacts',
-          icon: 'fa-address-book',
-          route: '/contacts',
-          group: 'CRM'
-        },
-
-        {
-          label: 'Accounts',
-          icon: 'fa-building',
-          route: '/accounts',
-          group: 'CRM'
-        },
-
-
-
+        { label: 'Users', icon: 'fa-user', route: '/users', group: 'CRM' },
+        // { label: 'Roles', icon: 'fa-user-tag', route: '/roles', group: 'CRM' },
+        { label: 'Roles & Permissions', icon: 'fa-key', route: '/roles-permissions', group: 'CRM' },
+        { label: 'Menu Access', icon: 'fa-bars', route: '/menu-access', group: 'CRM' },
+        { label: 'User Groups', icon: 'fa-users-viewfinder', route: '/user-groups', group: 'CRM' },
+        { label: 'Access Policies', icon: 'fa-shield-halved', route: '/access-policies', group: 'CRM' },
+        { label: 'Inherited', icon: 'fa-share-nodes', route: '/inherited', group: 'CRM' },
+        { label: 'User Limit', icon: 'fa-user-check', route: '/user-limit', group: 'CRM' },
+        { label: 'License', icon: 'fa-certificate', route: '/license', group: 'CRM' },
+        { label: 'Password Policy', icon: 'fa-lock', route: '/password-policy', group: 'CRM' }
       ]
     },
-
+    {
+      label: 'CRM Configuration',
+      icon: 'fa-sliders',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Lead Settings', icon: 'fa-filter', route: '/lead-settings', group: 'CRM' },
+        { label: 'Pipeline Settings', icon: 'fa-chart-line', route: '/pipeline-settings', group: 'CRM' },
+        { label: 'Opportunity Stages', icon: 'fa-list-ol', route: '/opportunity-stages', group: 'CRM' },
+        { label: 'Activity Types', icon: 'fa-list', route: '/activity-types', group: 'CRM' },
+        { label: 'Lead Sources', icon: 'fa-bullhorn', route: '/lead-sources', group: 'CRM' },
+        { label: 'Industries', icon: 'fa-industry', route: '/industries', group: 'CRM' },
+        { label: 'Territories', icon: 'fa-earth-asia', route: '/territories', group: 'CRM' },
+        { label: 'Sales Targets', icon: 'fa-bullseye', route: '/salestargets', group: 'CRM' },
+        { label: 'Number Series', icon: 'fa-hashtag', route: '/number-series', group: 'CRM' },
+        { label: 'Custom Fields', icon: 'fa-table-columns', route: '/custom-fields', group: 'CRM' }
+      ]
+    },
+    {
+      label: 'CRM Operations',
+      icon: 'fa-briefcase',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Leads', icon: 'fa-user-plus', route: '/leads', group: 'CRM' },
+        { label: 'Accounts', icon: 'fa-building', route: '/accounts', group: 'CRM' },
+        { label: 'Contacts', icon: 'fa-address-book', route: '/contacts', group: 'CRM' },
+        { label: 'Opportunities', icon: 'fa-handshake', route: '/opportunities', group: 'CRM' },
+        { label: 'Products', icon: 'fa-box', route: '/products', group: 'CRM' },
+        { label: 'Price Books', icon: 'fa-book', route: '/price-books', group: 'CRM' },
+        { label: 'Quotations', icon: 'fa-file-invoice', route: '/quotations', group: 'CRM' },
+        { label: 'Sales Orders', icon: 'fa-cart-shopping', route: '/orders', group: 'CRM' },
+        { label: 'Customer Invoices', icon: 'fa-file-invoice-dollar', route: '/invoice-sales', group: 'CRM' },
+        { label: 'Customer Payments', icon: 'fa-money-check-dollar', route: '/payments', group: 'CRM' },
+        { label: 'Contracts', icon: 'fa-file-signature', route: '/contracts', group: 'CRM' }
+      ]
+    },
     {
       label: 'Activities',
       icon: 'fa-calendar-days',
       group: 'CRM',
       expanded: false,
       children: [
-
-        {
-          label: 'Tasks',
-          icon: 'fa-list-check',
-          route: '/tasks',
-          group: 'CRM'
-        },
-
-        {
-          label: 'Meetings',
-          icon: 'fa-handshake',
-          route: '/meetings',
-          group: 'CRM'
-        },
-
-        {
-          label: 'Calls',
-          icon: 'fa-phone',
-          route: '/calls',
-          group: 'CRM'
-        },
-        {
-          label: 'Calendar',
-          icon: 'fa-calendar',
-          route: '/calendar',
-          group: 'CRM'
-        },
-        {
-          label: 'Reminders',
-          icon: 'fa-notes',
-          group: 'CRM'
-        }
-
+        { label: 'Calendar', icon: 'fa-calendar', route: '/calendar', group: 'CRM' },
+        { label: 'Tasks', icon: 'fa-list-check', route: '/tasks', group: 'CRM' },
+        { label: 'Meetings', icon: 'fa-handshake', route: '/meetings', group: 'CRM' },
+        { label: 'Calls', icon: 'fa-phone', route: '/calls', group: 'CRM' },
+        { label: 'Emails', icon: 'fa-envelope', route: '/emails', group: 'CRM' },
+        { label: 'Notes', icon: 'fa-note-sticky', route: '/notes', group: 'CRM' },
+        // { label: 'Reminders', icon: 'fa-bell', route: '/reminders', group: 'CRM' }
       ]
-
     },
     {
       label: 'Marketing',
-      icon: 'fa-money-bill',
+      icon: 'fa-bullhorn',
       group: 'CRM',
       expanded: false,
       children: [
-        {
-          label: 'Campaigns',
-          icon: 'fa-user-plus',
-          route: '/leads',
-          group: 'CRM'
-        },
-        {
-          label: 'Email Campaigns',
-          icon: 'fa-handshake',
-          route: '/opportunities',
-          group: 'CRM'
-        },
-        {
-          label: 'SMS Campaigns',
-          icon: 'fa-deals',
-          group: 'CRM'
-        },
-
-        {
-          label: 'Social Media Campaign',
-          icon: 'fa-file-lines',
-          route: '/quotes',
-          group: 'CRM'
-        },
-        {
-          label: 'Orders',
-          icon: 'fa-cart-shopping',
-          route: '/orders',
-          group: 'CRM'
-        },
-        {
-          label: 'Invoices',
-          icon: 'fa-file-invoice',
-          route: '/invoices',
-          group: 'CRM'
-        },
-        {
-          label: 'Sales Pipeline',
-          icon: 'fa-sales',
-          group: 'CRM'
-        }
-
+        { label: 'Campaigns', icon: 'fa-bullhorn', route: '/campaigns', group: 'CRM' },
+        { label: 'Email Campaigns', icon: 'fa-envelope', route: '/email-campaigns', group: 'CRM' },
+        { label: 'SMS Campaigns', icon: 'fa-comment-sms', route: '/sms-campaigns', group: 'CRM' },
+        { label: 'WhatsApp Campaigns', icon: 'fa-comments', route: '/whatsapp-campaigns', group: 'CRM' },
+        { label: 'Marketing Lists', icon: 'fa-list', route: '/marketing-lists', group: 'CRM' }
       ]
-
     },
 
     {
-      label: 'Products & Services',
-      icon: 'fa-boxes',
-      route: '/products',
-      group: 'CRM'
+      label: 'Customer Service',
+      icon: 'fa-headset',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Tickets', icon: 'fa-ticket', route: '/tickets', group: 'CRM' },
+        { label: 'Ticket Categories', icon: 'fa-tags', route: '/ticket-categories', group: 'CRM' },
+        { label: 'Knowledge Base', icon: 'fa-book-open', route: '/knowledge-base', group: 'CRM' },
+        { label: 'FAQs', icon: 'fa-circle-question', route: '/faqs', group: 'CRM' }
+      ]
     },
+
     {
-      label: 'Customer Management',
-      icon: 'fa-users',
-      route: '/customer-management',
-      group: 'CRM'
+      label: 'Projects',
+      icon: 'fa-diagram-project',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Projects', icon: 'fa-folder', route: '/projects', group: 'CRM' },
+        { label: 'Milestones', icon: 'fa-flag-checkered', route: '/milestones', group: 'CRM' },
+        { label: 'Tasks', icon: 'fa-list-check', route: '/project-tasks', group: 'CRM' },
+        { label: 'Project Documents', icon: 'fa-file-lines', route: '/project-documents', group: 'CRM' },
+        { label: 'Timesheets', icon: 'fa-clock', route: '/timesheet', group: 'CRM' }
+      ]
     },
-    {
-      label: 'Employee Management',
-      icon: 'fa-users',
-      route: '/employee-management',
-      group: 'CRM'
-    },
+    // {
+    //   label: 'Documents',
+    //   icon: 'fa-folder-open',
+    //   group: 'CRM',
+    //   expanded: false,
+    //   children: [
+    //     { label: 'Document Library', icon: 'fa-folder-open', route: '/document-library', group: 'CRM' },
+    //     { label: 'Document Categories', icon: 'fa-folder-tree', route: '/document-categories', group: 'CRM' },
+    //     { label: 'Folders', icon: 'fa-folder', route: '/folders', group: 'CRM' },
+    //     { label: 'Version History', icon: 'fa-clock-rotate-left', route: '/version-history', group: 'CRM' },
+    //     { label: 'Sharing', icon: 'fa-share-nodes', route: '/sharing', group: 'CRM' }
+    //   ]
+    // },
     {
       label: 'Workflow & Automation',
       icon: 'fa-code-branch',
-      route: '/workflow-automation',
-      group: 'CRM'
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Workflow Rules', icon: 'fa-gears', route: '/workflow-rules', group: 'CRM' },
+        { label: 'Approval Workflow', icon: 'fa-check-double', route: '/approval-workflow', group: 'CRM' },
+        { label: 'Auto Assignment', icon: 'fa-user-check', route: '/auto-assignment', group: 'CRM' },
+        { label: 'Escalation Rules', icon: 'fa-arrow-up-right-dots', route: '/escalation-rules', group: 'CRM' },
+        { label: 'SLA Rules', icon: 'fa-stopwatch', route: '/sla-rules', group: 'CRM' },
+        { label: 'Email Automation', icon: 'fa-envelope-open-text', route: '/email-automation', group: 'CRM' }
+      ]
     },
     {
-      label: 'Notification Management',
-      icon: 'fa-bell',
-      route: '/notifications',
-      group: 'CRM'
+      label: 'Communication',
+      icon: 'fa-comments',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Email Templates', icon: 'fa-envelope', route: '/email-notification', group: 'CRM' },
+        { label: 'SMS Templates', icon: 'fa-comment', route: '/sms-notification', group: 'CRM' },
+        { label: 'WhatsApp Templates', icon: 'fa-comments', route: '/whatsapp-notification', group: 'CRM' },
+        { label: 'Push Notifications', icon: 'fa-bell', route: '/push-notification', group: 'CRM' },
+        { label: 'Notification Rules', icon: 'fa-sliders', route: '/notification-rules', group: 'CRM' }
+      ]
     },
     {
-      label: 'Reports',
-      icon: 'fa-chart-column',
-      route: '/reports',
-      group: 'CRM'
+      label: 'Integrations',
+      icon: 'fa-plug',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'API Tokens', icon: 'fa-key', route: '/api-tokens', group: 'CRM' },
+        { label: 'Company Webhooks', icon: 'fa-link', route: '/company-webhooks', group: 'CRM' },
+        { label: 'Gmail Integration', icon: 'fa-envelope', route: '/gmail-integration', group: 'CRM' },
+        { label: 'Outlook Integration', icon: 'fa-envelope-open', route: '/outlook-integration', group: 'CRM' },
+        { label: 'Google Calendar', icon: 'fa-calendar', route: '/calendar', group: 'CRM' },
+        { label: 'Microsoft Teams', icon: 'fa-users', route: '/microsoft-teams', group: 'CRM' },
+        { label: 'Zoom', icon: 'fa-video', route: '/zoom', group: 'CRM' }
+      ]
     },
     {
-      label: 'Settings',
+      label: 'Security',
+      icon: 'fa-shield-halved',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Login Sessions', icon: 'fa-right-to-bracket', route: '/login-sessions', group: 'CRM' },
+        { label: 'MFA', icon: 'fa-mobile-screen-button', route: '/mfa', group: 'CRM' },
+        { label: 'IP Restrictions', icon: 'fa-network-wired', route: '/ip-restrictions', group: 'CRM' },
+        { label: 'Device Management', icon: 'fa-laptop', route: '/device-management', group: 'CRM' },
+        { label: 'Security Logs', icon: 'fa-file-shield', route: '/security-logs', group: 'CRM' }
+      ]
+    },
+    // {
+    //   label: 'Reports & Analytics',
+    //   icon: 'fa-chart-column',
+    //   group: 'CRM',
+    //   expanded: false,
+    //   children: [
+    //     { label: 'Dashboard Reports', icon: 'fa-chart-pie', route: '/dashboard-reports', group: 'CRM' },
+    //     { label: 'Lead Reports', icon: 'fa-user-plus', route: '/lead-reports', group: 'CRM' },
+    //     { label: 'Opportunity Reports', icon: 'fa-handshake', route: '/opportunity-reports', group: 'CRM' },
+    //     { label: 'Sales Reports', icon: 'fa-chart-line', route: '/sales-reports', group: 'CRM' },
+    //     { label: 'Customer Reports', icon: 'fa-users', route: '/customer-reports', group: 'CRM' },
+    //     { label: 'Product Reports', icon: 'fa-box', route: '/product-reports', group: 'CRM' },
+    //     { label: 'Marketing Reports', icon: 'fa-bullhorn', route: '/marketing-reports', group: 'CRM' },
+    //     { label: 'Support Reports', icon: 'fa-headset', route: '/support-reports', group: 'CRM' },
+    //     { label: 'Employee Reports', icon: 'fa-user-tie', route: '/employee-reports', group: 'CRM' },
+    //     { label: 'Audit Reports', icon: 'fa-clipboard-check', route: '/audit-reports', group: 'CRM' },
+    //     { label: 'Custom Reports', icon: 'fa-file-export', route: '/custom-reports', group: 'CRM' }
+    //   ]
+    // },
+    {
+      label: 'Company Settings',
       icon: 'fa-gears',
-      route: '/settings',
-      group: 'CRM'
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'General Settings', icon: 'fa-sliders', route: '/general-settings', group: 'CRM' },
+        { label: 'Branding', icon: 'fa-palette', route: '/brands', group: 'CRM' },
+        { label: 'Localization', icon: 'fa-globe', route: '/localization', group: 'CRM' },
+        { label: 'Time Zone', icon: 'fa-clock', route: '/time-zones', group: 'CRM' },
+        { label: 'Currency', icon: 'fa-dollar-sign', route: '/currency', group: 'CRM' },
+        { label: 'Fiscal Year', icon: 'fa-calendar-week', route: '/fiscal-year', group: 'CRM' },
+        { label: 'Number Formats', icon: 'fa-hashtag', route: '/number-formats', group: 'CRM' }
+      ]
     },
     {
-      label: 'Setup',
-      icon: 'fa-gears',
-      route: '/setup',
-      group: 'CRM'
+      label: 'File Management',
+      icon: 'fa-folder-tree',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'File Upload Settings', icon: 'fa-upload', route: '/file-upload-settings', group: 'CRM' },
+        { label: 'Document Categories', icon: 'fa-folder', route: '/document-categories', group: 'CRM' },
+        { label: 'Storage Usage', icon: 'fa-hard-drive', route: '/storage-usage', group: 'CRM' }
+      ]
+    },
+    {
+      label: 'Audit & Monitoring',
+      icon: 'fa-clipboard-list',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'Audit Logs', icon: 'fa-clipboard-check', route: '/audit-logs', group: 'CRM' },
+        { label: 'Login History', icon: 'fa-clock-rotate-left', route: '/login-history', group: 'CRM' },
+        { label: 'API Usage Logs', icon: 'fa-code', route: '/api-usage-logs', group: 'CRM' },
+        { label: 'Error Logs', icon: 'fa-triangle-exclamation', route: '/error-logs', group: 'CRM' },
+        { label: 'User Activities', icon: 'fa-user-clock', route: '/user-activities', group: 'CRM' }
+      ]
+    },
+     {
+      label: 'Profile',
+      icon: 'fa-user-circle',
+      group: 'CRM',
+      expanded: false,
+      children: [
+        { label: 'My Profile', icon: 'fa-id-card', route: '/profile', group: 'CRM' },
+        // { label: 'Change Password', icon: 'fa-key', route: '/change-password', group: 'CRM' },
+       { label: 'Sessions', icon: 'fa-laptop', route: '/sessions', group: 'CRM' },
+       { label: 'Multi-Factor Authentication', icon: 'fa-shield-halved', route: '/mfa', group: 'CRM' }
+      ]
     }
 
   ];
+  // companyAdminMenus: SidebarMenu[] = [
+  //   {
+  //     label: 'Dashboard',
+  //     icon: 'fa-chart-line',
+  //     route: '/dashboard',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Sales',
+  //     icon: 'fa-money-bill',
+  //     group: 'CRM',
+  //     expanded: false,
+  //     children: [
+  //       {
+  //         label: 'Leads',
+  //         icon: 'fa-user-plus',
+  //         route: '/leads',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Opportunities',
+  //         icon: 'fa-handshake',
+  //         route: '/opportunities',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Deals',
+  //         icon: 'fa-deals',
+  //         group: 'CRM'
+  //       },
+
+  //       {
+  //         label: 'Quotes',
+  //         icon: 'fa-file-lines',
+  //         route: '/quotes',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Orders',
+  //         icon: 'fa-cart-shopping',
+  //         route: '/orders',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Invoices',
+  //         icon: 'fa-file-invoice',
+  //         route: '/invoices',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Sales Pipeline',
+  //         icon: 'fa-sales',
+  //         group: 'CRM'
+  //       }
+
+  //     ]
+
+  //   },
+  //   {
+  //     label: 'Customer',
+  //     icon: 'fa-users',
+  //     group: 'CRM',
+  //     expanded: false,
+  //     children: [
+
+
+  //       {
+  //         label: 'Contacts',
+  //         icon: 'fa-address-book',
+  //         route: '/contacts',
+  //         group: 'CRM'
+  //       },
+
+  //       {
+  //         label: 'Accounts',
+  //         icon: 'fa-building',
+  //         route: '/accounts',
+  //         group: 'CRM'
+  //       },
+
+
+
+  //     ]
+  //   },
+
+  //   {
+  //     label: 'Activities',
+  //     icon: 'fa-calendar-days',
+  //     group: 'CRM',
+  //     expanded: false,
+  //     children: [
+
+  //       {
+  //         label: 'Tasks',
+  //         icon: 'fa-list-check',
+  //         route: '/tasks',
+  //         group: 'CRM'
+  //       },
+
+  //       {
+  //         label: 'Meetings',
+  //         icon: 'fa-handshake',
+  //         route: '/meetings',
+  //         group: 'CRM'
+  //       },
+
+  //       {
+  //         label: 'Calls',
+  //         icon: 'fa-phone',
+  //         route: '/calls',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Calendar',
+  //         icon: 'fa-calendar',
+  //         route: '/calendar',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Reminders',
+  //         icon: 'fa-notes',
+  //         group: 'CRM'
+  //       }
+
+  //     ]
+
+  //   },
+  //   {
+  //     label: 'Marketing',
+  //     icon: 'fa-money-bill',
+  //     group: 'CRM',
+  //     expanded: false,
+  //     children: [
+  //       {
+  //         label: 'Campaigns',
+  //         icon: 'fa-user-plus',
+  //         route: '/leads',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Email Campaigns',
+  //         icon: 'fa-handshake',
+  //         route: '/opportunities',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'SMS Campaigns',
+  //         icon: 'fa-deals',
+  //         group: 'CRM'
+  //       },
+
+  //       {
+  //         label: 'Social Media Campaign',
+  //         icon: 'fa-file-lines',
+  //         route: '/quotes',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Orders',
+  //         icon: 'fa-cart-shopping',
+  //         route: '/orders',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Invoices',
+  //         icon: 'fa-file-invoice',
+  //         route: '/invoices',
+  //         group: 'CRM'
+  //       },
+  //       {
+  //         label: 'Sales Pipeline',
+  //         icon: 'fa-sales',
+  //         group: 'CRM'
+  //       }
+
+  //     ]
+
+  //   },
+
+  //   {
+  //     label: 'Products & Services',
+  //     icon: 'fa-boxes',
+  //     route: '/products',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Customer Management',
+  //     icon: 'fa-users',
+  //     route: '/customer-management',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Employee Management',
+  //     icon: 'fa-users',
+  //     route: '/employee-management',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Workflow & Automation',
+  //     icon: 'fa-code-branch',
+  //     route: '/workflow-automation',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Notification Management',
+  //     icon: 'fa-bell',
+  //     route: '/notifications',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Reports',
+  //     icon: 'fa-chart-column',
+  //     route: '/reports',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Settings',
+  //     icon: 'fa-gears',
+  //     route: '/settings',
+  //     group: 'CRM'
+  //   },
+  //   {
+  //     label: 'Setup',
+  //     icon: 'fa-gears',
+  //     route: '/setup',
+  //     group: 'CRM'
+  //   }
+
+  // ];
   userMenus: SidebarMenu[] = [
 
     // =====================================================
